@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Application Name -->
+    <string name="app_name">MemoryReel</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_library">Library</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_upload">Upload</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Accessibility Content Descriptions -->
+    <string name="cd_upload_button">Upload new photos or videos</string>
+    <string name="cd_search_button">Search your memories</string>
+    <string name="cd_media_thumbnail">Memory thumbnail</string>
+    <string name="cd_voice_search">Search using voice</string>
+    <string name="cd_carousel_section">Scrollable memories section</string>
+    <string name="cd_media_controls">Media playback controls</string>
+
+    <!-- Media Section Headers -->
+    <string name="recently_added">Recently Added</string>
+    <string name="this_day_history">This Day in History</string>
+    <string name="family_favorites">Family Favorites</string>
+    <string name="ai_highlights">AI Highlights</string>
+    <string name="shared_memories">Shared Memories</string>
+
+    <!-- Media Controls -->
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="share">Share Memory</string>
+    <string name="download">Download</string>
+    <string name="favorite">Add to Favorites</string>
+    <string name="cast">Cast to TV</string>
+
+    <!-- Search -->
+    <string name="search_hint">Search your memories…</string>
+    <string name="voice_search_prompt">Say what you\'re looking for…</string>
+    <string name="no_results">No memories found</string>
+    <string name="search_by_face">Search by face</string>
+    <string name="search_by_date">Search by date</string>
+
+    <!-- Upload -->
+    <string name="upload_photo">Upload Photo</string>
+    <string name="upload_video">Upload Video</string>
+    <string name="upload_progress">Uploading %1$d of %2$d</string>
+    <string name="upload_success">Upload complete</string>
+    <string name="upload_batch">Upload Multiple</string>
+
+    <!-- Error Messages -->
+    <string name="error_network">Network connection error. Please check your connection and try again.</string>
+    <string name="error_upload">Unable to upload content. Please try again.</string>
+    <string name="error_playback">Unable to play this content. Please try again later.</string>
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="error_storage">Insufficient storage space. Please free up space and try again.</string>
+    <string name="error_ai_processing">Unable to process content with AI. Retrying with alternative service.</string>
+
+    <!-- Biometric Authentication -->
+    <string name="biometric_prompt">Verify your identity to access your memories</string>
+    <string name="biometric_error">Authentication failed. Please try again.</string>
+    <string name="biometric_fallback">Use PIN instead</string>
+    <string name="biometric_success">Authentication successful</string>
+</resources>
