@@ -1,0 +1,25 @@
+{
+  "watch": [
+    "src/**/*.ts",
+    "src/**/*.json"
+  ],
+  "ignore": [
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts",
+    "src/tests/**/*",
+    "node_modules",
+    "dist",
+    "coverage"
+  ],
+  "ext": "ts,json",
+  "exec": "ts-node ./src/server.ts",
+  "env": {
+    "NODE_ENV": "development",
+    "TS_NODE_PROJECT": "./tsconfig.json"
+  },
+  "events": {
+    "restart": "echo \"[nodemon] App restarted due to changes\""
+  },
+  "delay": "1500",
+  "verbose": true
+}
