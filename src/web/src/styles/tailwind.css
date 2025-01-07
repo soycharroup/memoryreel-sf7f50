@@ -1,0 +1,158 @@
+/* ==========================================================================
+   MemoryReel Design System - Tailwind CSS Configuration
+   Version: 1.0.0
+   ========================================================================== */
+
+@import './variables.css'; /* Design system tokens */
+@import './global.css'; /* Global styles */
+
+/* Tailwind Base Layer
+   ========================================================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Layer Customizations
+   ========================================================================== */
+@layer base {
+  html {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    color-scheme: light dark;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Component Layer Definitions
+   ========================================================================== */
+@layer components {
+  /* Card Component */
+  .card {
+    @apply bg-surface rounded-lg shadow-md transition-all duration-200;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  /* Carousel Component */
+  .carousel {
+    @apply flex gap-4 overflow-x-auto snap-x snap-mandatory;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Focus Ring - Web */
+  .focus-ring {
+    @apply outline-none ring-2 ring-primary ring-offset-2;
+    ring-opacity: var(--focus-ring-opacity, 0.5);
+  }
+
+  /* Focus Ring - TV Optimized */
+  .tv-focus-ring {
+    @apply outline-none ring-4 ring-primary-400 ring-offset-4 scale-105;
+    ring-opacity: var(--tv-focus-ring-opacity, 0.75);
+  }
+
+  /* Media Card */
+  .media-card {
+    @apply relative overflow-hidden;
+    aspect-ratio: var(--card-aspect-ratio);
+  }
+
+  /* Navigation Item */
+  .nav-item {
+    @apply px-4 py-2 rounded-md transition-colors;
+    @apply hover:bg-primary/10 focus-visible:focus-ring;
+  }
+
+  /* TV Navigation Item */
+  .tv-nav-item {
+    @apply px-tv-4 py-tv-2 rounded-xl transition-transform;
+    @apply focus-visible:tv-focus-ring;
+  }
+}
+
+/* Utility Layer Extensions
+   ========================================================================== */
+@layer utilities {
+  /* High Contrast Utilities */
+  .high-contrast {
+    @apply contrast-150;
+  }
+
+  /* TV-Optimized Spacing */
+  .tv-spacing {
+    @apply p-tv-4 gap-tv-4;
+  }
+
+  /* Scrollbar Hiding */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Theme Configuration
+   ========================================================================== */
+module.exports = {
+  theme: {
+    screens: {
+      'mobile': '320px',
+      'tablet': '768px',
+      'desktop': '1024px',
+      'tv': '1440px',
+      'tv-4k': '2160px',
+    },
+    colors: {
+      primary: 'var(--primary-color)',
+      secondary: 'var(--secondary-color)',
+      accent: 'var(--accent-color)',
+      background: 'var(--background-color)',
+      surface: 'var(--surface-color)',
+      text: 'var(--text-color)',
+      'text-secondary': 'var(--text-color-secondary)',
+      border: 'var(--border-color)',
+      error: 'var(--error-color)',
+      success: 'var(--success-color)',
+      warning: 'var(--warning-color)',
+      info: 'var(--info-color)',
+      focus: 'var(--focus-ring-color)',
+      'focus-tv': 'var(--tv-focus-ring-color)',
+    },
+    spacing: {
+      '1': 'var(--spacing-1)',
+      '2': 'var(--spacing-2)',
+      '3': 'var(--spacing-3)',
+      '4': 'var(--spacing-4)',
+      '6': 'var(--spacing-6)',
+      '8': 'var(--spacing-8)',
+      '12': 'var(--spacing-12)',
+      '16': 'var(--spacing-16)',
+      'tv-1': 'var(--tv-spacing-1)',
+      'tv-2': 'var(--tv-spacing-2)',
+      'tv-4': 'var(--tv-spacing-4)',
+      'tv-8': 'var(--tv-spacing-8)',
+    },
+    extend: {
+      aspectRatio: {
+        'card': 'var(--card-aspect-ratio)',
+      },
+      scale: {
+        'tv-focus': 'var(--card-scale-factor)',
+      },
+      transitionDuration: {
+        'tv': 'var(--transition-slow)',
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms')({
+      strategy: 'class',
+    }),
+    require('@tailwindcss/aspect-ratio'),
+  ],
+};
