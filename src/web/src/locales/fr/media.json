@@ -1,0 +1,130 @@
+{
+  "player": {
+    "play": "Lire",
+    "pause": "Pause", 
+    "stop": "Arrêter",
+    "mute": "Muet",
+    "unmute": "Activer le son",
+    "fullscreen": "Plein écran",
+    "exitFullscreen": "Quitter le plein écran",
+    "quality": {
+      "title": "Qualité",
+      "auto": "Auto",
+      "high": "Haute",
+      "medium": "Moyenne", 
+      "low": "Basse"
+    },
+    "errors": {
+      "playback": "Une erreur de lecture s'est produite",
+      "network": "Une erreur réseau s'est produite",
+      "format": "Format non pris en charge",
+      "generic": "Une erreur s'est produite pendant la lecture"
+    }
+  },
+  "library": {
+    "title": "Bibliothèque multimédia",
+    "empty": "Aucun élément multimédia trouvé",
+    "filter": {
+      "all": "Tous les médias",
+      "photos": "Photos",
+      "videos": "Vidéos",
+      "favorites": "Favoris",
+      "recent": "Ajouts récents",
+      "thisDay": "Ce jour"
+    },
+    "sort": {
+      "title": "Trier par",
+      "date": "Date",
+      "name": "Nom",
+      "type": "Type",
+      "size": "Taille"
+    },
+    "view": {
+      "grid": "Vue grille",
+      "list": "Vue liste",
+      "carousel": "Vue carrousel"
+    }
+  },
+  "upload": {
+    "title": "Télécharger des médias",
+    "dragDrop": "Glissez et déposez les fichiers ici",
+    "browse": "Parcourir les fichiers",
+    "processing": "Traitement des médias",
+    "success": "Téléchargement réussi",
+    "error": "Échec du téléchargement",
+    "progress": "{{progress}}% téléchargé",
+    "types": {
+      "title": "Types pris en charge",
+      "photos": "Photos (JPG, PNG, HEIC)",
+      "videos": "Vidéos (MP4, MOV, AVI)"
+    },
+    "validation": {
+      "size": "Fichier trop volumineux",
+      "type": "Type de fichier non pris en charge",
+      "duplicate": "Le fichier existe déjà"
+    }
+  },
+  "metadata": {
+    "date": "Date de prise",
+    "location": "Lieu",
+    "size": "Taille du fichier",
+    "type": "Type de fichier",
+    "duration": "Durée",
+    "resolution": "Résolution",
+    "camera": "Appareil photo",
+    "tags": "Tags",
+    "people": "Personnes",
+    "description": "Description",
+    "noData": "Aucune métadonnée disponible"
+  },
+  "actions": {
+    "share": "Partager",
+    "download": "Télécharger",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "favorite": "Ajouter aux favoris",
+    "unfavorite": "Retirer des favoris",
+    "addToAlbum": "Ajouter à l'album",
+    "removeFromAlbum": "Retirer de l'album",
+    "rotate": "Pivoter",
+    "crop": "Recadrer",
+    "enhance": "Améliorer"
+  },
+  "tv": {
+    "navigation": {
+      "up": "Haut",
+      "down": "Bas",
+      "left": "Gauche",
+      "right": "Droite",
+      "select": "Sélectionner",
+      "back": "Retour",
+      "menu": "Menu"
+    },
+    "focus": {
+      "hint": "Appuyez sur OK pour sélectionner",
+      "selected": "Sélectionné"
+    },
+    "playback": {
+      "startHint": "Appuyez sur Lecture pour démarrer",
+      "controls": "Contrôles de lecture",
+      "nextItem": "Élément suivant",
+      "previousItem": "Élément précédent"
+    }
+  },
+  "ai": {
+    "analysis": {
+      "processing": "Analyse des médias",
+      "faceDetection": "Détection des visages",
+      "sceneRecognition": "Reconnaissance des scènes",
+      "objectDetection": "Détection des objets",
+      "complete": "Analyse terminée"
+    },
+    "tags": {
+      "suggested": "Tags suggérés",
+      "people": "Personnes sur la photo",
+      "objects": "Objets détectés",
+      "scenes": "Type de scène",
+      "emotions": "Émotions détectées"
+    }
+  }
+}
