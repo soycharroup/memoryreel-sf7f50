@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Brand Colors -->
+    <color name="colorPrimary">#FF1E88E5</color>
+    <color name="colorPrimaryDark">#FF1976D2</color>
+    <color name="colorPrimaryVariant">#FF2196F3</color>
+    <color name="colorAccent">#FF00BCD4</color>
+
+    <!-- Theme Background Colors -->
+    <color name="colorBackground">#FF121212</color>
+    <color name="colorBackgroundLight">#FFFAFAFA</color>
+    <color name="colorSurface">#FF1E1E1E</color>
+    <color name="colorSurfaceLight">#FFFFFFFF</color>
+
+    <!-- Text Colors - WCAG 2.1 AA Compliant -->
+    <color name="textColorPrimary">#DEFFFFFF</color>
+    <color name="textColorPrimaryLight">#DE000000</color>
+    <color name="textColorSecondary">#99FFFFFF</color>
+    <color name="textColorSecondaryLight">#99000000</color>
+
+    <!-- Status Colors -->
+    <color name="colorError">#FFB00020</color>
+    <color name="colorSuccess">#FF4CAF50</color>
+    <color name="colorWarning">#FFFFC107</color>
+
+    <!-- TV Interface Colors - 10-foot UI Optimized -->
+    <color name="tvFocusHighlight">#FF2196F3</color>
+    <color name="tvFocusHighlightLight">#FF1976D2</color>
+
+    <!-- Component-Specific Colors -->
+    <color name="carouselBackground">#1F000000</color>
+    <color name="carouselBackgroundLight">#1FFFFFFF</color>
+    <color name="mediaCardBackground">#FF262626</color>
+    <color name="mediaCardBackgroundLight">#FFFFFFFF</color>
+    <color name="scrimBackground">#52000000</color>
+    <color name="scrimBackgroundLight">#52FFFFFF</color>
+</resources>
