@@ -1,0 +1,140 @@
+{
+  "app": {
+    "name": "MemoryReel",
+    "tagline": "Your family memories, beautifully organized",
+    "loading": "Loading your memories...",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "save": "Save changes",
+    "delete": "Delete permanently",
+    "edit": "Edit details",
+    "confirm": "Confirm action",
+    "back": "Go back",
+    "next": "Continue",
+    "done": "Finish",
+    "close": "Close window"
+  },
+  "navigation": {
+    "home": "Home",
+    "library": "Family Library",
+    "search": "Search Memories",
+    "upload": "Add Memories",
+    "profile": "Family Profile",
+    "settings": "Preferences",
+    "help": "Get Help",
+    "logout": "Sign Out",
+    "tv": {
+      "up": "Move up",
+      "down": "Move down",
+      "left": "Move left",
+      "right": "Move right",
+      "select": "Select item",
+      "back": "Go back",
+      "menu": "Open menu",
+      "voice": "Voice search"
+    }
+  },
+  "auth": {
+    "login": "Welcome Back",
+    "register": "Join MemoryReel",
+    "forgotPassword": "Forgot Your Password?",
+    "resetPassword": "Create New Password",
+    "email": "Email Address",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "rememberMe": "Keep Me Signed In",
+    "orContinueWith": "Or continue with",
+    "alreadyHaveAccount": "Already have a family account?",
+    "dontHaveAccount": "New to MemoryReel?",
+    "createAccount": "Create Family Account",
+    "signIn": "Sign In to Your Account",
+    "signOut": "Sign Out",
+    "verifyEmail": "Verify Your Email",
+    "resendCode": "Send New Code",
+    "mfaPrompt": "Enter Your Security Code",
+    "biometricPrompt": "Use Face ID or Touch ID"
+  },
+  "settings": {
+    "general": "General Settings",
+    "appearance": "Appearance",
+    "theme": {
+      "title": "Display Theme",
+      "light": "Light Mode",
+      "dark": "Dark Mode",
+      "system": "Match System"
+    },
+    "language": {
+      "title": "Display Language",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "zh": "中文"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "push": "Push Notifications",
+      "email": "Email Updates",
+      "updates": "Product News",
+      "reminders": "Memory Reminders"
+    },
+    "privacy": {
+      "title": "Privacy Settings",
+      "sharing": "Default Sharing",
+      "visibility": "Profile Visibility",
+      "dataUsage": "Data Usage"
+    },
+    "storage": {
+      "title": "Storage Management",
+      "used": "{{used}} of {{total}} used",
+      "manage": "Manage Storage",
+      "cleanup": "Free Up Space"
+    }
+  },
+  "components": {
+    "button": {
+      "loading": "Processing...",
+      "retry": "Try Again",
+      "more": "Show More"
+    },
+    "dialog": {
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "warning": "Warning",
+      "success": "Success"
+    },
+    "input": {
+      "search": "Find memories...",
+      "clear": "Clear input",
+      "required": "Required field",
+      "optional": "Optional"
+    },
+    "toast": {
+      "success": "Success",
+      "error": "Error occurred",
+      "info": "Information",
+      "warning": "Warning"
+    }
+  },
+  "accessibility": {
+    "skipToMain": "Skip to main content",
+    "mainNavigation": "Main navigation menu",
+    "searchInput": "Search your memories",
+    "menuButton": "Open navigation menu",
+    "closeButton": "Close current window",
+    "modalDialog": "Dialog window",
+    "loading": "Content is loading",
+    "expandButton": "Show more details",
+    "collapseButton": "Show less details",
+    "screenReader": {
+      "imageAlt": "Family photo from {{date}}",
+      "videoAlt": "Family video from {{date}}",
+      "loadingState": "Please wait while content loads",
+      "navigationPrompt": "Use arrow keys to navigate",
+      "selectionPrompt": "Press Enter to select",
+      "menuOpen": "Menu opened",
+      "menuClose": "Menu closed"
+    }
+  }
+}
