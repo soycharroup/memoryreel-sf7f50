@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    MemoryReel Android Adaptive Icon Configuration
+    Target SDK: 33 (Android 13)
+    Min SDK: 23 (Android 6.0)
+    Base Size: 108x108 dp
+    Safe Zone: 72x72 dp
+-->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background layer with theme-aware coloring -->
+    <background android:drawable="@mipmap/ic_launcher_background"/>
+    
+    <!-- Foreground layer with theme-aware styling -->
+    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+</adaptive-icon>
