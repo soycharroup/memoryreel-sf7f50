@@ -1,0 +1,118 @@
+{
+  "player": {
+    "play": "播放",
+    "pause": "暂停",
+    "stop": "停止",
+    "mute": "静音",
+    "unmute": "取消静音",
+    "fullscreen": "全屏",
+    "exitFullscreen": "退出全屏",
+    "quality": {
+      "title": "画质",
+      "auto": "自动",
+      "high": "高清",
+      "medium": "标清",
+      "low": "流畅"
+    },
+    "errors": {
+      "playback": "播放出错",
+      "network": "网络错误",
+      "format": "不支持的格式",
+      "generic": "播放时发生错误"
+    }
+  },
+  "controls": {
+    "previous": "上一个",
+    "next": "下一个",
+    "skipForward": "快进",
+    "skipBackward": "快退",
+    "volume": "音量",
+    "settings": "设置"
+  },
+  "navigation": {
+    "back": "返回",
+    "home": "主页",
+    "menu": "菜单",
+    "search": "搜索"
+  },
+  "content": {
+    "recentlyAdded": "最近添加",
+    "favorites": "收藏夹",
+    "albums": "相册",
+    "memories": "回忆",
+    "thisDay": "历史上的今天",
+    "shared": "已分享",
+    "aiCollections": "智能合集"
+  },
+  "ai": {
+    "processing": {
+      "analyzing": "正在分析",
+      "detecting": "正在检测人脸",
+      "categorizing": "正在分类",
+      "organizing": "正在整理"
+    },
+    "features": {
+      "faceRecognition": "人脸识别",
+      "sceneDetection": "场景识别",
+      "smartTags": "智能标签",
+      "autoAlbum": "自动相册"
+    },
+    "suggestions": {
+      "title": "智能推荐",
+      "similar": "相似内容",
+      "related": "相关内容",
+      "memories": "珍贵回忆"
+    }
+  },
+  "accessibility": {
+    "videoDescription": "视频描述",
+    "audioDescription": "音频描述",
+    "subtitles": "字幕",
+    "closedCaptions": "隐藏式字幕",
+    "screenReader": {
+      "playButton": "点击播放视频",
+      "pauseButton": "点击暂停视频",
+      "volumeSlider": "调节音量滑块",
+      "progressBar": "视频进度条"
+    }
+  },
+  "upload": {
+    "title": "上传",
+    "select": "选择文件",
+    "progress": "上传进度",
+    "success": "上传成功",
+    "error": "上传失败",
+    "retry": "重试"
+  },
+  "sharing": {
+    "share": "分享",
+    "private": "私密",
+    "public": "公开",
+    "family": "家庭成员",
+    "copyLink": "复制链接",
+    "permissions": "权限设置"
+  },
+  "metadata": {
+    "date": "日期",
+    "location": "地点",
+    "people": "人物",
+    "tags": "标签",
+    "description": "描述",
+    "device": "设备信息"
+  },
+  "smartTv": {
+    "remote": {
+      "up": "向上",
+      "down": "向下",
+      "left": "向左",
+      "right": "向右",
+      "select": "确定",
+      "voiceCommand": "语音命令"
+    },
+    "interface": {
+      "focusHint": "使用遥控器方向键导航",
+      "pressSelect": "按确定键选择",
+      "pressBack": "按返回键退出"
+    }
+  }
+}
