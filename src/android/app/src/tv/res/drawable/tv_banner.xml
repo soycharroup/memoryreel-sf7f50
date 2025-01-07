@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    TV Banner Drawable for MemoryReel Android TV App
+    - Optimized for 10-foot viewing distance
+    - Supports light/dark theme variations
+    - Implements Netflix-style gradient design
+    - Maintains brand identity across themes
+    Dimensions: 320dp x 180dp (16:9 aspect ratio)
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background gradient layer -->
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Theme-aware gradient that adapts to light/dark modes -->
+            <gradient
+                android:type="linear"
+                android:startColor="@color/colorPrimary"
+                android:endColor="@color/colorBackground"
+                android:angle="45" />
+            
+            <!-- Rounded corners for modern TV UI design -->
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+
+    <!-- Optional overlay for better text contrast -->
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Subtle scrim gradient for text visibility -->
+            <gradient
+                android:type="linear"
+                android:startColor="#33000000"
+                android:endColor="#00000000"
+                android:angle="90" />
+            
+            <!-- Match parent corners -->
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+</layer-list>
