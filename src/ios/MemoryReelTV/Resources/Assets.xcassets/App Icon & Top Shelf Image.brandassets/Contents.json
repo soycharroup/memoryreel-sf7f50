@@ -1,0 +1,56 @@
+{
+  "assets": [
+    {
+      "idiom": "tv",
+      "role": "primary-app-icon",
+      "size": "400x240",
+      "filename": "App-Icon-400x240.png",
+      "scale": "1x",
+      "minimum-system-version": "14.0"
+    },
+    {
+      "idiom": "tv",
+      "role": "primary-app-icon", 
+      "size": "800x480",
+      "filename": "App-Icon-800x480.png",
+      "scale": "2x",
+      "minimum-system-version": "14.0"
+    },
+    {
+      "idiom": "tv",
+      "role": "top-shelf-image",
+      "size": "1920x720",
+      "filename": "Top-Shelf-1920x720.png",
+      "scale": "1x",
+      "minimum-system-version": "14.0"
+    },
+    {
+      "idiom": "tv",
+      "role": "top-shelf-image",
+      "size": "3840x1440",
+      "filename": "Top-Shelf-3840x1440.png",
+      "scale": "2x",
+      "minimum-system-version": "14.0"
+    },
+    {
+      "idiom": "tv",
+      "role": "top-shelf-image-wide",
+      "size": "2320x720",
+      "filename": "Top-Shelf-Wide-2320x720.png",
+      "scale": "1x",
+      "minimum-system-version": "14.0"
+    },
+    {
+      "idiom": "tv",
+      "role": "top-shelf-image-wide",
+      "size": "4640x1440",
+      "filename": "Top-Shelf-Wide-4640x1440.png",
+      "scale": "2x",
+      "minimum-system-version": "14.0"
+    }
+  ],
+  "info": {
+    "version": 1,
+    "author": "xcode"
+  }
+}
