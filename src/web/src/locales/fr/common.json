@@ -1,0 +1,145 @@
+{
+  "app": {
+    "name": "MemoryReel",
+    "tagline": "Vos souvenirs de famille, magnifiquement organisés",
+    "loading": "Chargement…",
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "done": "Terminé",
+    "close": "Fermer"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "library": "Bibliothèque",
+    "search": "Rechercher",
+    "upload": "Télécharger",
+    "profile": "Profil",
+    "settings": "Paramètres",
+    "help": "Aide",
+    "logout": "Déconnexion"
+  },
+  "auth": {
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "forgotPassword": "Mot de passe oublié\u00a0?",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "rememberMe": "Se souvenir de moi",
+    "orContinueWith": "Ou continuer avec",
+    "alreadyHaveAccount": "Vous avez déjà un compte\u00a0?",
+    "dontHaveAccount": "Vous n'avez pas de compte\u00a0?",
+    "createAccount": "Créer un compte",
+    "signIn": "Se connecter",
+    "signOut": "Se déconnecter",
+    "verifyEmail": "Vérifier l'e-mail",
+    "resendCode": "Renvoyer le code",
+    "mfaPrompt": "Entrez le code d'authentification",
+    "biometricPrompt": "Utiliser l'authentification biométrique"
+  },
+  "profile": {
+    "personalInfo": "Informations personnelles",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "phoneNumber": "Numéro de téléphone",
+    "language": "Langue",
+    "timezone": "Fuseau horaire",
+    "notifications": "Notifications",
+    "privacy": "Confidentialité",
+    "security": "Sécurité",
+    "subscription": "Abonnement",
+    "deleteAccount": "Supprimer le compte"
+  },
+  "settings": {
+    "general": "Paramètres généraux",
+    "appearance": "Apparence",
+    "theme": {
+      "title": "Thème",
+      "light": "Clair",
+      "dark": "Sombre",
+      "system": "Système"
+    },
+    "language": {
+      "title": "Langue",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "zh": "中文"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "push": "Notifications push",
+      "email": "Notifications par e-mail",
+      "updates": "Mises à jour produit",
+      "reminders": "Rappels"
+    },
+    "privacy": {
+      "title": "Confidentialité",
+      "sharing": "Partage par défaut",
+      "visibility": "Visibilité du profil",
+      "dataUsage": "Utilisation des données"
+    },
+    "storage": {
+      "title": "Stockage",
+      "used": "{{used}} sur {{total}} utilisés",
+      "manage": "Gérer le stockage",
+      "cleanup": "Nettoyage du stockage"
+    }
+  },
+  "components": {
+    "button": {
+      "loading": "Chargement…",
+      "retry": "Réessayer",
+      "more": "Afficher plus"
+    },
+    "dialog": {
+      "confirm": "Confirmer",
+      "cancel": "Annuler",
+      "delete": "Supprimer",
+      "warning": "Avertissement",
+      "success": "Succès"
+    },
+    "input": {
+      "search": "Rechercher…",
+      "clear": "Effacer",
+      "required": "Obligatoire",
+      "optional": "Optionnel"
+    },
+    "toast": {
+      "success": "Succès",
+      "error": "Erreur",
+      "info": "Information",
+      "warning": "Avertissement"
+    },
+    "dropdown": {
+      "select": "Sélectionner",
+      "noOptions": "Aucune option disponible",
+      "loading": "Chargement des options…"
+    },
+    "pagination": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "page": "Page {{page}} sur {{total}}",
+      "itemsPerPage": "Éléments par page"
+    }
+  },
+  "accessibility": {
+    "skipToMain": "Passer au contenu principal",
+    "mainNavigation": "Navigation principale",
+    "searchInput": "Champ de recherche",
+    "menuButton": "Bouton menu",
+    "closeButton": "Bouton fermer",
+    "modalDialog": "Boîte de dialogue modale",
+    "loading": "Contenu en cours de chargement",
+    "expandButton": "Bouton développer",
+    "collapseButton": "Bouton réduire"
+  }
+}
