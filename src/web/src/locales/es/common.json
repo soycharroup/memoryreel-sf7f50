@@ -1,0 +1,95 @@
+{
+  "app": {
+    "name": "MemoryReel",
+    "tagline": "Tus memorias familiares, bellamente organizadas",
+    "loading": "Cargando...",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "confirm": "Confirmar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "done": "Listo",
+    "close": "Cerrar"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "library": "Biblioteca",
+    "search": "Buscar",
+    "upload": "Subir",
+    "profile": "Perfil",
+    "settings": "Configuración",
+    "help": "Ayuda",
+    "logout": "Cerrar Sesión"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "register": "Registrarse",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "resetPassword": "Restablecer Contraseña",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "rememberMe": "Recordarme",
+    "orContinueWith": "O continuar con",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "dontHaveAccount": "¿No tienes una cuenta?",
+    "createAccount": "Crear Cuenta",
+    "signIn": "Iniciar Sesión",
+    "signOut": "Cerrar Sesión",
+    "verifyEmail": "Verificar Correo",
+    "resendCode": "Reenviar Código",
+    "mfaPrompt": "Ingresa el código de autenticación",
+    "biometricPrompt": "Usar autenticación biométrica"
+  },
+  "settings": {
+    "general": "Configuración General",
+    "appearance": "Apariencia",
+    "theme": {
+      "title": "Tema",
+      "light": "Claro",
+      "dark": "Oscuro",
+      "system": "Sistema"
+    },
+    "language": {
+      "title": "Idioma",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "zh": "中文"
+    },
+    "notifications": {
+      "title": "Notificaciones",
+      "push": "Notificaciones Push",
+      "email": "Notificaciones por Correo",
+      "updates": "Actualizaciones del Producto",
+      "reminders": "Recordatorios"
+    },
+    "privacy": {
+      "title": "Privacidad",
+      "sharing": "Compartir por Defecto",
+      "visibility": "Visibilidad del Perfil",
+      "dataUsage": "Uso de Datos"
+    },
+    "storage": {
+      "title": "Almacenamiento",
+      "used": "{{used}} de {{total}} usado",
+      "manage": "Administrar Almacenamiento",
+      "cleanup": "Limpieza de Almacenamiento"
+    }
+  },
+  "accessibility": {
+    "skipToMain": "Saltar al contenido principal",
+    "mainNavigation": "Navegación principal",
+    "searchInput": "Campo de búsqueda",
+    "menuButton": "Botón de menú",
+    "closeButton": "Botón de cerrar",
+    "modalDialog": "Ventana de diálogo",
+    "loading": "El contenido está cargando",
+    "expandButton": "Botón de expandir",
+    "collapseButton": "Botón de contraer"
+  }
+}
