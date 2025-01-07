@@ -1,0 +1,72 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Base resources
+resources:
+  - ../../base
+
+# Environment namespace
+namespace: memoryreel-staging
+namePrefix: staging-
+
+# Common labels for all resources
+commonLabels:
+  environment: staging
+  managed-by: kustomize
+  app.kubernetes.io/environment: staging
+  app.kubernetes.io/part-of: memoryreel
+  security.memoryreel.com/compliance-level: pre-production
+
+# Common annotations for all resources
+commonAnnotations:
+  environment.memoryreel.com/name: staging
+  environment.memoryreel.com/type: pre-production
+  monitoring.memoryreel.com/enabled: "true"
+  monitoring.memoryreel.com/log-level: debug
+  security.memoryreel.com/scan-enabled: "true"
+  deployment.memoryreel.com/owner: platform-team
+
+# Patches for environment-specific configurations
+patches:
+  - target:
+      kind: Deployment
+      name: memoryreel-backend
+    patch:
+      spec:
+        replicas: 2
+        template:
+          spec:
+            containers:
+              - name: backend
+                resources:
+                  requests:
+                    cpu: "1"
+                    memory: 2Gi
+                  limits:
+                    cpu: "2"
+                    memory: 4Gi
+                env:
+                  - name: NODE_ENV
+                    value: staging
+                  - name: LOG_LEVEL
+                    value: debug
+                  - name: ENABLE_MONITORING
+                    value: "true"
+
+# ConfigMap generation for environment variables
+configMapGenerator:
+  - name: staging-config
+    literals:
+      - ENVIRONMENT=staging
+      - LOG_LEVEL=debug
+      - ENABLE_MONITORING=true
+      - SECURITY_SCAN_ENABLED=true
+
+# Image configuration for staging environment
+images:
+  - name: memoryreel-backend
+    newName: docker.io/memoryreel/backend
+    newTag: staging
+  - name: memoryreel-web
+    newName: docker.io/memoryreel/web
+    newTag: staging
