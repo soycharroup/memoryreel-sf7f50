@@ -1,0 +1,143 @@
+# kustomize v5.0.0
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Production namespace configuration
+namespace: memoryreel-prod
+namePrefix: prod-
+
+# Common labels for all resources
+commonLabels:
+  environment: production
+  managed-by: kustomize
+  app: memoryreel
+  tier: production
+
+# Common annotations for all resources
+commonAnnotations:
+  contact: devops@memoryreel.com
+  environment: production
+  region: multi-region
+  deployment.kubernetes.io/revision: "1"
+  monitoring.memoryreel.com/enabled: "true"
+
+# Base resources and additional overlays
+resources:
+  - ../../base
+  - ../monitoring
+  - ../security
+
+# Production-specific patches
+patches:
+  - target:
+      kind: Deployment
+      name: memoryreel-backend
+    patch:
+      spec:
+        replicas: 5
+        strategy:
+          type: RollingUpdate
+          rollingUpdate:
+            maxSurge: 2
+            maxUnavailable: 1
+        template:
+          spec:
+            containers:
+              - name: backend
+                resources:
+                  requests:
+                    cpu: "4"
+                    memory: 8Gi
+                  limits:
+                    cpu: "8"
+                    memory: 16Gi
+                livenessProbe:
+                  httpGet:
+                    path: /health
+                    port: 8080
+                  initialDelaySeconds: 30
+                  periodSeconds: 10
+                readinessProbe:
+                  httpGet:
+                    path: /ready
+                    port: 8080
+                  initialDelaySeconds: 15
+                  periodSeconds: 5
+            affinity:
+              podAntiAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  - topologyKey: kubernetes.io/hostname
+
+# ConfigMap generation for production environment
+configMapGenerator:
+  - name: prod-config
+    literals:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - ENABLE_MONITORING=true
+      - ENABLE_TRACING=true
+      - AI_FAILOVER_ENABLED=true
+      - MULTI_REGION_ENABLED=true
+
+# Secret generation for production credentials
+secretGenerator:
+  - name: prod-secrets
+    type: Opaque
+
+# Resource quotas for production namespace
+quotas:
+  - name: compute-resources
+    spec:
+      hard:
+        requests.cpu: "32"
+        requests.memory: 64Gi
+        limits.cpu: "64"
+        limits.memory: 128Gi
+  - name: storage-resources
+    spec:
+      hard:
+        requests.storage: 2Ti
+        persistentvolumeclaims: "50"
+  - name: object-counts
+    spec:
+      hard:
+        pods: "100"
+        services: "30"
+        configmaps: "50"
+        secrets: "50"
+
+# HorizontalPodAutoscaler configurations
+patches:
+  - target:
+      kind: HorizontalPodAutoscaler
+      name: memoryreel-backend
+    patch:
+      spec:
+        minReplicas: 5
+        maxReplicas: 15
+        metrics:
+          - type: Resource
+            resource:
+              name: cpu
+              target:
+                type: Utilization
+                averageUtilization: 70
+          - type: Resource
+            resource:
+              name: memory
+              target:
+                type: Utilization
+                averageUtilization: 80
+
+# Security context patch for all pods
+patches:
+  - target:
+      kind: Deployment
+    patch:
+      spec:
+        template:
+          spec:
+            securityContext:
+              runAsNonRoot: true
+              runAsUser: 1000
+              fsGroup: 2000
