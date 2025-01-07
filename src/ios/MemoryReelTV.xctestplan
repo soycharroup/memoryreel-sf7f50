@@ -1,0 +1,156 @@
+{
+  "configurations": [
+    {
+      "id": "Debug Configuration",
+      "name": "Debug",
+      "options": {
+        "targetForVariableExpansion": {
+          "containerPath": "MemoryReel.xcodeproj",
+          "identifier": "MemoryReelTV",
+          "name": "MemoryReelTV"
+        },
+        "language": "en",
+        "region": "US",
+        "environmentVariables": {
+          "TESTING_ENV": "true",
+          "API_ENDPOINT": "https://api.memoryreel.com/test",
+          "ENABLE_PERFORMANCE_LOGGING": "true",
+          "NETWORK_CONDITION_SIMULATION": "enabled"
+        },
+        "codeCoverage": true,
+        "enablePerformanceTests": false,
+        "testTimeoutMultiplier": 1.5,
+        "testExecutionOrdering": "random",
+        "testRepetitionMode": "retryOnFailure",
+        "maximumTestRepetitions": 3
+      }
+    },
+    {
+      "id": "Release Configuration",
+      "name": "Release",
+      "options": {
+        "targetForVariableExpansion": {
+          "containerPath": "MemoryReel.xcodeproj",
+          "identifier": "MemoryReelTV",
+          "name": "MemoryReelTV"
+        },
+        "language": "en",
+        "region": "US",
+        "environmentVariables": {
+          "TESTING_ENV": "true",
+          "API_ENDPOINT": "https://api.memoryreel.com/test",
+          "ENABLE_PERFORMANCE_LOGGING": "true",
+          "NETWORK_CONDITION_SIMULATION": "variable"
+        },
+        "codeCoverage": true,
+        "enablePerformanceTests": true,
+        "testTimeoutMultiplier": 2.0,
+        "testExecutionOrdering": "random",
+        "testRepetitionMode": "retryOnFailure",
+        "maximumTestRepetitions": 3
+      }
+    }
+  ],
+  "defaultOptions": {
+    "codeCoverage": true,
+    "targetForVariableExpansion": {
+      "containerPath": "MemoryReel.xcodeproj",
+      "identifier": "MemoryReelTV",
+      "name": "MemoryReelTV"
+    },
+    "testTimeoutMultiplier": 1.0,
+    "testExecutionOrdering": "random",
+    "testRepetitionMode": "retryOnFailure",
+    "maximumTestRepetitions": 3,
+    "diagnosticsOptions": {
+      "enablePerformanceMetrics": true,
+      "enableScreenshots": true,
+      "enableVideoRecording": true,
+      "enableNetworkDiagnostics": true,
+      "enableMemoryMetrics": true,
+      "enableCPUMetrics": true,
+      "enableFPSMetrics": true
+    }
+  },
+  "testTargets": [
+    {
+      "target": {
+        "containerPath": "MemoryReel.xcodeproj",
+        "identifier": "MemoryReelTVTests",
+        "name": "MemoryReelTVTests"
+      },
+      "enabled": true,
+      "parallelizable": true,
+      "skippedTests": [],
+      "testExecutionOrdering": "random",
+      "testTimeoutMultiplier": 1.0,
+      "performanceTestConfigurations": [
+        {
+          "name": "Baseline",
+          "metrics": [
+            {
+              "name": "responseTime",
+              "threshold": 2.0,
+              "unit": "seconds"
+            },
+            {
+              "name": "memoryUsage",
+              "threshold": 100,
+              "unit": "MB"
+            },
+            {
+              "name": "frameRate",
+              "threshold": 60,
+              "unit": "fps"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "testPlans": [
+    {
+      "id": "TVMediaPlayer Tests",
+      "name": "Media Playback",
+      "testTargets": ["MemoryReelTVTests"],
+      "includedTests": [
+        "TVMediaPlayerTests/testPlayback",
+        "TVMediaPlayerTests/testSeek",
+        "TVMediaPlayerTests/testPlaybackSpeed",
+        "TVMediaPlayerTests/testRemoteControl",
+        "TVMediaPlayerTests/testStreamingQuality",
+        "TVMediaPlayerTests/testAdaptiveBitrate"
+      ]
+    },
+    {
+      "id": "TVNavigation Tests",
+      "name": "Navigation",
+      "testTargets": ["MemoryReelTVTests"],
+      "includedTests": [
+        "TVNavigationTests/testNavigateToSection",
+        "TVNavigationTests/testBackNavigation",
+        "TVNavigationTests/testRemoteControlNavigation",
+        "TVNavigationTests/testNavigationBridgeIntegration",
+        "TVNavigationTests/testFocusEngine",
+        "TVNavigationTests/testAccessibilityNavigation"
+      ]
+    }
+  ],
+  "coverageTargets": [
+    {
+      "target": {
+        "containerPath": "MemoryReel.xcodeproj",
+        "identifier": "MemoryReelTV",
+        "name": "MemoryReelTV"
+      },
+      "minimumCoverage": 85
+    }
+  ],
+  "version": 1,
+  "name": "MemoryReelTV Tests",
+  "testLanguage": "en",
+  "testRegion": "US",
+  "targetDeviceFamily": "tvOS",
+  "minimumOSVersion": "17.0",
+  "maximumTestExecutionTime": 3600
+}
