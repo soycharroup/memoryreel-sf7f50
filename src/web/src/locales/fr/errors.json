@@ -1,0 +1,46 @@
+{
+  "validation": {
+    "invalidEmail": "Veuillez saisir une adresse e-mail valide",
+    "invalidPassword": "Le mot de passe doit contenir au moins 8 caractères et inclure une majuscule, une minuscule, un chiffre et un caractère spécial",
+    "invalidMediaType": "Type de fichier multimédia non pris en charge. Veuillez télécharger uniquement des images ou des vidéos",
+    "invalidMediaSize": "La taille du fichier dépasse la limite maximale autorisée",
+    "requiredField": "Ce champ est obligatoire",
+    "invalidInput": "Veuillez vérifier votre saisie et réessayer"
+  },
+  "authentication": {
+    "invalidCredentials": "E-mail ou mot de passe invalide",
+    "accountLocked": "Votre compte a été verrouillé. Veuillez contacter le support",
+    "sessionExpired": "Votre session a expiré. Veuillez vous reconnecter",
+    "mfaRequired": "L'authentification à deux facteurs est requise",
+    "mfaInvalid": "Code d'authentification invalide",
+    "tokenExpired": "Le jeton d'authentification a expiré"
+  },
+  "authorization": {
+    "insufficientPermissions": "Vous n'avez pas la permission d'effectuer cette action",
+    "accountSuspended": "Votre compte a été suspendu",
+    "libraryAccessDenied": "Vous n'avez pas accès à cette bibliothèque",
+    "contentAccessDenied": "Vous n'avez pas accès à ce contenu",
+    "uploadNotAllowed": "Vous n'avez pas la permission de télécharger du contenu"
+  },
+  "resource": {
+    "notFound": "La ressource demandée n'a pas été trouvée",
+    "libraryNotFound": "Bibliothèque non trouvée",
+    "contentNotFound": "Contenu non trouvé",
+    "userNotFound": "Utilisateur non trouvé",
+    "mediaNotFound": "Fichier multimédia non trouvé"
+  },
+  "rateLimit": {
+    "tooManyRequests": "Trop de requêtes. Veuillez réessayer plus tard",
+    "uploadLimit": "Limite de téléchargement atteinte. Veuillez réessayer plus tard",
+    "searchLimit": "Limite de recherche atteinte. Veuillez réessayer plus tard",
+    "apiLimit": "Limite de requêtes API atteinte. Veuillez réessayer plus tard"
+  },
+  "server": {
+    "internalError": "Une erreur interne du serveur s'est produite",
+    "serviceUnavailable": "Le service est temporairement indisponible",
+    "databaseError": "L'opération de base de données a échoué",
+    "aiProcessingError": "Le traitement IA a échoué",
+    "storageError": "L'opération de stockage a échoué",
+    "networkError": "Une erreur réseau s'est produite"
+  }
+}
