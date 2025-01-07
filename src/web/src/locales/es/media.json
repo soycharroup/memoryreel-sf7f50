@@ -1,0 +1,106 @@
+{
+  "player": {
+    "play": "Reproducir",
+    "pause": "Pausar", 
+    "stop": "Detener",
+    "mute": "Silenciar",
+    "unmute": "Activar Sonido",
+    "fullscreen": "Pantalla Completa",
+    "exitFullscreen": "Salir de Pantalla Completa",
+    "quality": {
+      "title": "Calidad",
+      "auto": "Automática",
+      "high": "Alta",
+      "medium": "Media", 
+      "low": "Baja"
+    },
+    "errors": {
+      "playback": "Ocurrió un error de reproducción",
+      "network": "Ocurrió un error de red",
+      "format": "Formato no soportado",
+      "generic": "Ocurrió un error durante la reproducción"
+    }
+  },
+  "library": {
+    "title": "Biblioteca de Medios",
+    "empty": "No se encontraron elementos multimedia",
+    "filter": {
+      "all": "Todos los Medios",
+      "photos": "Fotos",
+      "videos": "Videos",
+      "favorites": "Favoritos",
+      "recent": "Añadidos Recientemente",
+      "thisDay": "Este Día"
+    },
+    "sort": {
+      "title": "Ordenar Por",
+      "date": "Fecha",
+      "name": "Nombre",
+      "type": "Tipo",
+      "size": "Tamaño"
+    },
+    "view": {
+      "grid": "Vista en Cuadrícula",
+      "list": "Vista en Lista",
+      "carousel": "Vista en Carrusel"
+    }
+  },
+  "upload": {
+    "title": "Subir Medios",
+    "select": "Seleccionar Archivos",
+    "drag": "Arrastra y suelta archivos aquí",
+    "progress": "Progreso de Subida",
+    "success": "Subida Completada",
+    "error": "Error al Subir",
+    "cancel": "Cancelar Subida"
+  },
+  "ai": {
+    "processing": "Procesando con IA",
+    "faceDetection": "Detectando Rostros",
+    "tagging": "Etiquetando Contenido",
+    "organizing": "Organizando Medios",
+    "suggestions": "Sugerencias de IA",
+    "error": "Error en Procesamiento de IA"
+  },
+  "smartTv": {
+    "navigation": {
+      "up": "Arriba",
+      "down": "Abajo",
+      "left": "Izquierda",
+      "right": "Derecha",
+      "select": "Seleccionar",
+      "back": "Atrás",
+      "menu": "Menú"
+    },
+    "voiceControl": {
+      "listening": "Escuchando...",
+      "speak": "Di un Comando",
+      "understood": "Comando Entendido",
+      "notUnderstood": "No se Entendió el Comando"
+    }
+  },
+  "accessibility": {
+    "loading": "Cargando contenido",
+    "mediaType": {
+      "photo": "Fotografía",
+      "video": "Video",
+      "album": "Álbum"
+    },
+    "navigation": {
+      "nextItem": "Siguiente elemento",
+      "previousItem": "Elemento anterior",
+      "playMedia": "Reproducir medio",
+      "stopMedia": "Detener reproducción"
+    }
+  },
+  "metadata": {
+    "date": "Fecha",
+    "location": "Ubicación",
+    "people": "Personas",
+    "tags": "Etiquetas",
+    "device": "Dispositivo",
+    "size": "Tamaño",
+    "format": "Formato",
+    "duration": "Duración"
+  }
+}
