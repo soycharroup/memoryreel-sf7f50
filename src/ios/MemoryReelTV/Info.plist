@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Core App Identity -->
+    <key>CFBundleIdentifier</key>
+    <string>com.memoryreel.tv</string>
+    <key>CFBundleDisplayName</key>
+    <string>MemoryReel</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+
+    <!-- Top Shelf Image Configuration -->
+    <key>TVTopShelfImage</key>
+    <dict>
+        <key>TVTopShelfPrimaryImage</key>
+        <string>App Icon &amp; Top Shelf Image</string>
+        <key>TVTopShelfPrimaryImageWide</key>
+        <string>App Icon &amp; Top Shelf Image Wide</string>
+        <key>TVTopShelfSecondaryImage</key>
+        <string>Top Shelf Secondary</string>
+        <key>TVTopShelfSecondaryImageWide</key>
+        <string>Top Shelf Secondary Wide</string>
+    </dict>
+
+    <!-- Required Device Capabilities -->
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>arm64</string>
+        <string>wifi</string>
+        <string>video-playback</string>
+        <string>metal</string>
+        <string>gamekit</string>
+    </array>
+
+    <!-- UI Configuration -->
+    <key>UIUserInterfaceStyle</key>
+    <string>Dark</string>
+    <key>UIMainStoryboardFile</key>
+    <string>Main</string>
+    <key>TVUIRequiresCaptureKeyFocus</key>
+    <true/>
+
+    <!-- Localization Support -->
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>en</string>
+        <string>es</string>
+        <string>fr</string>
+        <string>de</string>
+        <string>zh</string>
+    </array>
+
+    <!-- System Requirements -->
+    <key>LSMinimumSystemVersion</key>
+    <string>14.0</string>
+
+    <!-- Background Execution -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>audio</string>
+        <string>fetch</string>
+    </array>
+
+    <!-- Build Settings -->
+    <key>TARGETED_DEVICE_FAMILY</key>
+    <string>3</string>
+    <key>DEVELOPMENT_TEAM</key>
+    <string>MEMORYREEL_TEAM_ID</string>
+    <key>CODE_SIGN_STYLE</key>
+    <string>Automatic</string>
+    <key>ENABLE_BITCODE</key>
+    <string>NO</string>
+</dict>
+</plist>
