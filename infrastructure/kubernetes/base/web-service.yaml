@@ -1,0 +1,52 @@
+# Kubernetes Service configuration for MemoryReel web frontend
+# Version: v1
+# Purpose: Exposes React.js web application to cluster network with optimized load balancing
+
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: memoryreel-web
+  namespace: memoryreel
+  labels:
+    app: memoryreel
+    component: web
+    managed-by: kustomize
+    tier: frontend
+    environment: ${ENV}
+    version: ${VERSION}
+  annotations:
+    description: "Web frontend service for MemoryReel platform"
+    # Prometheus monitoring configuration
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "80"
+    prometheus.io/path: "/metrics"
+    # AWS Load Balancer configuration
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "60"
+
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
+    - name: https
+      port: 443
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: memoryreel
+    component: web
+    tier: frontend
+  sessionAffinity: None
+  publishNotReadyAddresses: false
+  # Topology-aware routing configuration for multi-region support
+  topologyKeys:
+    - "kubernetes.io/hostname"
+    - "topology.kubernetes.io/zone"
+    - "topology.kubernetes.io/region"
+    - "*"
