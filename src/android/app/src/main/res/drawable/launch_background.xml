@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Theme-aware background color that adapts to light/dark mode -->
+    <item android:drawable="@color/colorBackground" />
+
+    <!-- Centered logo with proper scaling for both mobile and TV -->
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/logo"
+            android:tileMode="disabled">
+            <!-- Scale logo appropriately based on device type -->
+            <size
+                android:width="120dp"
+                android:height="120dp" />
+        </bitmap>
+    </item>
+
+    <!-- Optional overlay for TV mode to ensure proper contrast -->
+    <item android:drawable="@drawable/tv_scrim"
+        android:visibility="gone" />
+</layer-list>
