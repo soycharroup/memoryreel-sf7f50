@@ -1,0 +1,170 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+android {
+    namespace 'com.memoryreel'
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    ndkVersion rootProject.ext.ndkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.memoryreel"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+    }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+            universalApk true
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        release {
+            def keystorePropertiesFile = rootProject.file("app/keystore.properties")
+            def keystoreProperties = new Properties()
+            keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            multiDexEnabled true
+            debuggable true
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            multiDexEnabled true
+        }
+    }
+
+    flavorDimensions "platform"
+    productFlavors {
+        mobile {
+            dimension "platform"
+            applicationId "com.memoryreel"
+            resValue "string", "app_name", "MemoryReel"
+            manifestPlaceholders = [
+                appIcon: "@mipmap/ic_launcher",
+                appRoundIcon: "@mipmap/ic_launcher_round",
+                isTV: "false"
+            ]
+        }
+        tv {
+            dimension "platform"
+            applicationId "com.memoryreel.tv"
+            minSdkVersion rootProject.ext.tvMinSdkVersion
+            resValue "string", "app_name", "MemoryReel TV"
+            manifestPlaceholders = [
+                appIcon: "@mipmap/ic_launcher_tv",
+                appRoundIcon: "@mipmap/ic_launcher_tv",
+                isTV: "true",
+                banner: "@drawable/tv_banner"
+            ]
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    packagingOptions {
+        pickFirst '**/libc++_shared.so'
+        pickFirst '**/libfbjni.so'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/*.kotlin_module'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.facebook.react:react-native:${rootProject.ext.reactNativeVersion}"
+    implementation "androidx.core:core-ktx:1.12.0"
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.9.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "androidx.security:security-crypto:1.1.0"
+    implementation "androidx.biometric:biometric:1.1.0"
+    implementation "androidx.camera:camera-core:1.3.0"
+    implementation "androidx.camera:camera-camera2:1.3.0"
+    implementation "androidx.camera:camera-lifecycle:1.3.0"
+    implementation "androidx.exifinterface:exifinterface:1.3.6"
+    implementation "com.google.android.exoplayer:exoplayer-core:2.19.1"
+    implementation "com.google.android.exoplayer:exoplayer-ui:2.19.1"
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.okhttp3:okhttp:4.11.0"
+    implementation "com.google.gson:gson:2.10.1"
+    implementation "io.reactivex.rxjava3:rxjava:3.1.6"
+    implementation "io.reactivex.rxjava3:rxandroid:3.0.2"
+    implementation "com.jakewharton.timber:timber:5.0.1"
+    implementation "com.jakewharton.disklrucache:disklrucache:2.0.2"
+    implementation "com.datadog:dd-sdk-android:1.15.0"
+    implementation "com.amazonaws:aws-android-sdk-mobile-client:2.75.0"
+    implementation "com.amazonaws:aws-android-sdk-s3:2.72.0"
+    implementation "io.jsonwebtoken:jjwt-api:0.11.5"
+    implementation "org.tensorflow:tensorflow-lite:2.12.0"
+    implementation "org.tensorflow:tensorflow-lite-support:0.4.3"
+
+    tvImplementation "androidx.leanback:leanback:1.2.0-alpha02"
+    tvImplementation "androidx.tvprovider:tvprovider:1.1.0-alpha01"
+    tvImplementation "androidx.leanback:leanback-preference:1.2.0-alpha02"
+
+    debugImplementation "com.facebook.flipper:flipper:0.182.0"
+    debugImplementation "com.facebook.flipper:flipper-network-plugin:0.182.0"
+    debugImplementation "com.facebook.soloader:soloader:0.10.5"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:2.10"
+
+    testImplementation "junit:junit:4.13.2"
+    testImplementation "org.mockito:mockito-core:5.4.0"
+    testImplementation "io.mockk:mockk:1.12.0"
+
+    androidTestImplementation "androidx.test.ext:junit:1.1.5"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
+    androidTestImplementation "androidx.test.espresso:espresso-accessibility:3.5.1"
+    androidTestImplementation "androidx.test:runner:1.5.0"
+    androidTestImplementation "androidx.test:rules:1.5.0"
+    androidTestImplementation "org.mockito:mockito-android:5.0.0"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:4.11.0"
+}
