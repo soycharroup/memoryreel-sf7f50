@@ -1,0 +1,130 @@
+{
+  "player": {
+    "play": "Play",
+    "pause": "Pause",
+    "stop": "Stop",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "fullscreen": "Full Screen",
+    "exitFullscreen": "Exit Full Screen",
+    "quality": {
+      "title": "Quality",
+      "auto": "Auto",
+      "high": "High (1080p)",
+      "medium": "Medium (720p)",
+      "low": "Low (480p)"
+    },
+    "errors": {
+      "playback": "Unable to play media. Please try again.",
+      "network": "Network connection lost. Retrying...",
+      "format": "This media format is not supported on your device",
+      "generic": "An unexpected error occurred during playback"
+    }
+  },
+  "library": {
+    "title": "Media Library",
+    "empty": "No media items found in this view",
+    "filter": {
+      "all": "All Media",
+      "photos": "Photos",
+      "videos": "Videos",
+      "favorites": "Favorites",
+      "recent": "Recently Added",
+      "thisDay": "This Day in History"
+    },
+    "sort": {
+      "title": "Sort By",
+      "date": "Capture Date",
+      "name": "File Name",
+      "type": "Media Type",
+      "size": "File Size"
+    },
+    "view": {
+      "grid": "Grid View",
+      "list": "List View",
+      "carousel": "TV Carousel View"
+    }
+  },
+  "upload": {
+    "title": "Upload Media",
+    "dragDrop": "Drag and drop files here or click to browse",
+    "browse": "Select Files",
+    "processing": "Processing your media files",
+    "success": "Upload completed successfully",
+    "error": "Some files failed to upload",
+    "progress": "{{progress}}% uploaded",
+    "types": {
+      "title": "Supported File Types",
+      "photos": "Photos (JPG, PNG, HEIC)",
+      "videos": "Videos (MP4, MOV, AVI)"
+    },
+    "validation": {
+      "size": "File exceeds maximum size limit",
+      "type": "This file type is not supported",
+      "duplicate": "This file has already been uploaded"
+    }
+  },
+  "metadata": {
+    "date": "Date Taken",
+    "location": "Location",
+    "size": "File Size",
+    "type": "File Type",
+    "duration": "Duration",
+    "resolution": "Resolution",
+    "camera": "Camera Model",
+    "tags": "Smart Tags",
+    "people": "People Identified",
+    "description": "AI-Generated Description",
+    "noData": "No metadata available for this item"
+  },
+  "actions": {
+    "share": "Share Media",
+    "download": "Download",
+    "delete": "Delete",
+    "edit": "Edit Details",
+    "favorite": "Add to Favorites",
+    "unfavorite": "Remove from Favorites",
+    "addToAlbum": "Add to Album",
+    "removeFromAlbum": "Remove from Album",
+    "rotate": "Rotate Image",
+    "crop": "Crop Media",
+    "enhance": "AI Enhancement"
+  },
+  "tv": {
+    "navigation": {
+      "up": "Move Up",
+      "down": "Move Down",
+      "left": "Previous Item",
+      "right": "Next Item",
+      "select": "Select Item",
+      "back": "Go Back",
+      "menu": "Open Menu"
+    },
+    "focus": {
+      "hint": "Press OK button to select this item",
+      "selected": "Currently Selected"
+    },
+    "playback": {
+      "startHint": "Press Play button to start playback",
+      "controls": "Available Playback Controls",
+      "nextItem": "Skip to Next",
+      "previousItem": "Return to Previous"
+    }
+  },
+  "ai": {
+    "analysis": {
+      "processing": "AI is analyzing your media",
+      "faceDetection": "Detecting and recognizing faces",
+      "sceneRecognition": "Analyzing scene content",
+      "objectDetection": "Identifying objects and activities",
+      "complete": "AI analysis completed successfully"
+    },
+    "tags": {
+      "suggested": "AI-Suggested Tags",
+      "people": "People Recognized",
+      "objects": "Objects Identified",
+      "scenes": "Scene Categories",
+      "emotions": "Detected Emotions"
+    }
+  }
+}
