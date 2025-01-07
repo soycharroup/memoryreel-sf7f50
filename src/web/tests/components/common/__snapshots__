@@ -1,0 +1,257 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar component renders with accessibility features 1`] = `
+<div
+  aria-label="User avatar"
+  class="avatar"
+  role="img"
+  tabindex="0"
+>
+  <img
+    alt="John Doe's profile picture"
+    class="avatar__image"
+    src="profile.jpg"
+  />
+</div>
+`;
+
+exports[`Avatar component renders with different sizes 1`] = `
+<div
+  class="avatar avatar--sm"
+  role="img"
+>
+  <img
+    alt="User avatar"
+    class="avatar__image"
+    src="profile.jpg"
+  />
+</div>
+`;
+
+exports[`Avatar component renders with different sizes 2`] = `
+<div
+  class="avatar avatar--md"
+  role="img"
+>
+  <img
+    alt="User avatar"
+    class="avatar__image"
+    src="profile.jpg"
+  />
+</div>
+`;
+
+exports[`Avatar component renders with different sizes 3`] = `
+<div
+  class="avatar avatar--lg"
+  role="img"
+>
+  <img
+    alt="User avatar"
+    class="avatar__image"
+    src="profile.jpg"
+  />
+</div>
+`;
+
+exports[`Avatar component renders with initials 1`] = `
+<div
+  class="avatar"
+  role="img"
+>
+  <div
+    class="avatar__initials"
+  >
+    JD
+  </div>
+</div>
+`;
+
+exports[`Avatar component renders with profile picture 1`] = `
+<div
+  class="avatar"
+  role="img"
+>
+  <img
+    alt="User avatar"
+    class="avatar__image"
+    src="profile.jpg"
+  />
+</div>
+`;
+
+exports[`Avatar component renders in different theme modes 1`] = `
+<div
+  class="avatar avatar--light"
+  role="img"
+>
+  <div
+    class="avatar__initials"
+  >
+    JD
+  </div>
+</div>
+`;
+
+exports[`Avatar component renders in different theme modes 2`] = `
+<div
+  class="avatar avatar--dark"
+  role="img"
+>
+  <div
+    class="avatar__initials"
+  >
+    JD
+  </div>
+</div>
+`;
+
+exports[`Avatar component renders on TV interface 1`] = `
+<div
+  class="avatar avatar--tv"
+  role="img"
+  tabindex="0"
+>
+  <img
+    alt="User avatar"
+    class="avatar__image avatar__image--tv"
+    src="profile.jpg"
+  />
+  <div
+    class="avatar__focus-ring"
+  />
+</div>
+`;
+```
+
+# src/web/tests/components/common/__snapshots__/Button.test.tsx.snap
+```typescript
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component renders with default props 1`] = `
+<button
+  class="button button--primary"
+  type="button"
+>
+  Click me
+</button>
+`;
+
+exports[`Button component renders different variants 1`] = `
+<button
+  class="button button--primary"
+  type="button"
+>
+  Primary
+</button>
+`;
+
+exports[`Button component renders different variants 2`] = `
+<button
+  class="button button--secondary"
+  type="button"
+>
+  Secondary
+</button>
+`;
+
+exports[`Button component renders different variants 3`] = `
+<button
+  class="button button--outline"
+  type="button"
+>
+  Outline
+</button>
+`;
+
+exports[`Button component renders different sizes 1`] = `
+<button
+  class="button button--primary button--sm"
+  type="button"
+>
+  Small
+</button>
+`;
+
+exports[`Button component renders different sizes 2`] = `
+<button
+  class="button button--primary button--md"
+  type="button"
+>
+  Medium
+</button>
+`;
+
+exports[`Button component renders different sizes 3`] = `
+<button
+  class="button button--primary button--lg"
+  type="button"
+>
+  Large
+</button>
+`;
+
+exports[`Button component renders in disabled state 1`] = `
+<button
+  class="button button--primary button--disabled"
+  disabled
+  type="button"
+>
+  Disabled
+</button>
+`;
+
+exports[`Button component renders in loading state 1`] = `
+<button
+  class="button button--primary button--loading"
+  disabled
+  type="button"
+>
+  <div
+    class="button__spinner"
+    role="status"
+  >
+    <span class="sr-only">Loading...</span>
+  </div>
+  Loading
+</button>
+`;
+
+exports[`Button component renders with theme variations 1`] = `
+<button
+  class="button button--primary button--light"
+  type="button"
+>
+  Light Theme
+</button>
+`;
+
+exports[`Button component renders with theme variations 2`] = `
+<button
+  class="button button--primary button--dark"
+  type="button"
+>
+  Dark Theme
+</button>
+`;
+
+exports[`Button component renders for TV interface 1`] = `
+<button
+  class="button button--primary button--tv"
+  tabindex="0"
+  type="button"
+>
+  <span class="button__content">TV Button</span>
+  <div class="button__focus-ring" />
+</button>
+`;
+
+exports[`Button component renders with focus states 1`] = `
+<button
+  class="button button--primary button--focused"
+  type="button"
+>
+  <span class="button__content">Focused Button</span>
+  <div class="button__focus-ring" />
+</button>
+`;
