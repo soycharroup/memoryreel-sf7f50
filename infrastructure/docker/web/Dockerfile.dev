@@ -1,0 +1,60 @@
+# Base image for development environment
+FROM node:18-alpine@sha256:d5b2a7869a4016b1847986ea52098fa404421e44272b594e29601a5c5dc5d4d7
+
+# Set environment variables for development
+ENV NODE_ENV=development \
+    PORT=3000 \
+    VITE_HMR_PORT=24678 \
+    WATCHPACK_POLLING=true \
+    CHOKIDAR_USEPOLLING=true
+
+# Install development dependencies
+RUN apk add --no-cache \
+    git \
+    python3 \
+    make \
+    g++ \
+    # Add development utilities
+    curl \
+    bash \
+    # Clean up cache
+    && rm -rf /var/cache/apk/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files for dependency installation
+COPY package*.json ./
+
+# Install all dependencies including devDependencies
+RUN npm install \
+    # Clear npm cache
+    && npm cache clean --force
+
+# Copy TypeScript configuration
+COPY tsconfig*.json ./
+
+# Copy Vite configuration
+COPY vite.config.ts ./
+
+# Create volume mount points
+VOLUME ["/app", "/app/node_modules"]
+
+# Expose ports for development
+# - 3000: Development server
+# - 24678: Vite HMR WebSocket
+# - 9229: Node.js debugging
+EXPOSE 3000 24678 9229
+
+# Configure health check for development server
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:3000/ || exit 1
+
+# Development command to start Vite dev server with HMR
+CMD ["npm", "run", "dev"]
+
+# Labels for development image
+LABEL maintainer="MemoryReel Development Team" \
+    version="1.0.0" \
+    description="Development environment for MemoryReel web application" \
+    environment="development"
