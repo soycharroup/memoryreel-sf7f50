@@ -1,0 +1,78 @@
+{
+  "app": {
+    "name": "MemoryReel",
+    "tagline": "Ihre Familienerinnerungen, wunderschön organisiert",
+    "description": "KI-gestützte Familienfoto- und Videoverwaltung"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "library": "Bibliothek",
+    "search": "Suche",
+    "upload": "Hochladen",
+    "profile": "Profil",
+    "settings": "Einstellungen"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "logout": "Abmelden",
+    "forgotPassword": "Passwort vergessen",
+    "resetPassword": "Passwort zurücksetzen"
+  },
+  "actions": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "share": "Teilen",
+    "confirm": "Bestätigen",
+    "back": "Zurück",
+    "next": "Weiter"
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "error": "Fehler",
+    "success": "Erfolgreich",
+    "warning": "Warnung",
+    "info": "Information",
+    "empty": "Keine Einträge gefunden",
+    "selected": "Ausgewählt",
+    "all": "Alle",
+    "none": "Keine",
+    "networkError": "Netzwerkfehler aufgetreten",
+    "serverError": "Serverfehler aufgetreten",
+    "validationError": "Überprüfen Sie Ihre Eingaben",
+    "processing": "Wird verarbeitet",
+    "uploading": "Wird hochgeladen",
+    "downloading": "Wird heruntergeladen"
+  },
+  "time": {
+    "today": "Heute",
+    "yesterday": "Gestern",
+    "thisWeek": "Diese Woche",
+    "thisMonth": "Dieser Monat",
+    "thisYear": "Dieses Jahr",
+    "lastWeek": "Letzte Woche",
+    "lastMonth": "Letzter Monat",
+    "lastYear": "Letztes Jahr"
+  },
+  "accessibility": {
+    "skipToMain": "Zum Hauptinhalt springen",
+    "mainNavigation": "Hauptnavigation",
+    "searchInput": "Sucheingabe",
+    "menuButton": "Menü-Schaltfläche",
+    "closeButton": "Schließen-Schaltfläche",
+    "modalClose": "Modal schließen",
+    "loading": "Inhalt wird geladen",
+    "imageAlt": "Bild von {{description}}",
+    "videoAlt": "Video von {{description}}",
+    "uploadProgress": "{{percent}}% hochgeladen"
+  },
+  "footer": {
+    "copyright": "© {{year}} MemoryReel. Alle Rechte vorbehalten.",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutzrichtlinie",
+    "help": "Hilfe-Center",
+    "contact": "Kontakt"
+  }
+}
