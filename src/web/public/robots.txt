@@ -1,0 +1,50 @@
+# Global rules for all crawlers
+User-agent: *
+Crawl-delay: 10
+
+# Protected routes
+Disallow: /api/
+Disallow: /auth/
+Disallow: /dashboard/
+Disallow: /library/
+Disallow: /upload/
+Disallow: /profile/
+Disallow: /settings/
+Disallow: /tv/
+Disallow: /admin/
+
+# Public routes
+Allow: /
+Allow: /about
+Allow: /features
+Allow: /pricing
+Allow: /contact
+Allow: /blog
+Allow: /support
+Allow: /terms
+Allow: /privacy
+
+# Specific rules for Googlebot
+User-agent: Googlebot
+Disallow: /api/
+Disallow: /auth/
+Disallow: /dashboard/
+Disallow: /library/
+Disallow: /upload/
+Disallow: /profile/
+Disallow: /settings/
+Disallow: /tv/
+Disallow: /admin/
+
+Allow: /
+Allow: /about
+Allow: /features
+Allow: /pricing
+Allow: /contact
+Allow: /blog
+Allow: /support
+Allow: /terms
+Allow: /privacy
+
+# XML Sitemap reference
+Sitemap: https://memoryreel.com/sitemap.xml
