@@ -1,0 +1,179 @@
+name: Backend CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/backend/**'
+      - '.github/workflows/backend.yml'
+      - 'infrastructure/docker/backend/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'src/backend/**'
+      - '.github/workflows/backend.yml'
+      - 'infrastructure/docker/backend/**'
+
+env:
+  NODE_VERSION: '18.x'
+  DOCKER_BUILDKIT: '1'
+  COVERAGE_THRESHOLD: '80'
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  ECR_REPOSITORY: memoryreel-backend
+  ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+
+jobs:
+  validate:
+    name: Validate and Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: src/backend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: src/backend
+        run: npm ci
+
+      - name: Run linting
+        working-directory: src/backend
+        run: npm run lint
+
+      - name: Check formatting
+        working-directory: src/backend
+        run: npm run format:check
+
+      - name: Run security audit
+        working-directory: src/backend
+        run: npm run security:audit
+        continue-on-error: false
+
+      - name: Run tests with coverage
+        working-directory: src/backend
+        run: npm run test:coverage
+        env:
+          CI: true
+
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-reports
+          path: src/backend/coverage
+          retention-days: 14
+
+  build:
+    name: Build and Push
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Generate image tags
+        id: tags
+        run: |
+          SHA_TAG=$(echo ${{ github.sha }} | cut -c1-8)
+          ENV_TAG=${{ env.ENVIRONMENT }}
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          echo "tags=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${SHA_TAG}-${ENV_TAG}-${TIMESTAMP},${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${ENV_TAG}-latest" >> $GITHUB_OUTPUT
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: infrastructure/docker/backend/Dockerfile
+          push: true
+          tags: ${{ steps.tags.outputs.tags }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            NODE_ENV=${{ env.ENVIRONMENT }}
+            BUILD_VERSION=${{ github.sha }}
+
+  deploy:
+    name: Deploy to ECS
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition \
+            --task-definition memoryreel-backend-${{ env.ENVIRONMENT }} \
+            --query taskDefinition > task-definition.json
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json
+          container-name: memoryreel-backend
+          image: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.ENVIRONMENT }}-latest
+
+      - name: Deploy to Amazon ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: memoryreel-backend-${{ env.ENVIRONMENT }}
+          cluster: memoryreel-${{ env.ENVIRONMENT }}
+          wait-for-service-stability: true
+          codedeploy-appspec: infrastructure/aws/appspec.yaml
+
+  notify:
+    name: Notify Deployment Status
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Notify Slack on success
+        if: ${{ needs.deploy.result == 'success' }}
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          slack-message: "✅ Backend deployment to ${{ env.ENVIRONMENT }} successful!\nCommit: ${{ github.sha }}\nTrigger: ${{ github.actor }}"
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+      - name: Notify Slack on failure
+        if: ${{ needs.deploy.result == 'failure' }}
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          slack-message: "❌ Backend deployment to ${{ env.ENVIRONMENT }} failed!\nCommit: ${{ github.sha }}\nTrigger: ${{ github.actor }}\nPlease check the logs for details."
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
