@@ -1,0 +1,131 @@
+/* General App Information
+   Used across multiple screens and contexts
+   Variables: None */
+"app.name" = "MemoryReel";
+"app.tagline" = "Your family memories, beautifully organized";
+"app.description" = "AI-powered family photo and video management";
+
+/* App Version Display
+   Used in settings and about screens
+   Variables: %1$@ = version number, %2$@ = build number */
+"app.version" = "Version %1$@ (%2$@)";
+
+/* Copyright Notice
+   Used in about screen and legal sections
+   Variables: %@ = current year */
+"app.copyright" = "© %@ MemoryReel. All rights reserved.";
+
+/* Navigation - Main Menu Items
+   Primary navigation elements used across the app
+   Accessibility labels provided for VoiceOver optimization */
+"nav.home" = "Home";
+"nav.home.a11y" = "Home screen, main navigation";
+
+"nav.library" = "Library";
+"nav.library.a11y" = "Media library, view all your content";
+
+"nav.search" = "Search";
+"nav.search.a11y" = "Search your memories";
+
+"nav.upload" = "Upload";
+"nav.upload.a11y" = "Add new photos or videos";
+
+"nav.profile" = "Profile";
+"nav.profile.a11y" = "Your account settings";
+
+"nav.settings" = "Settings";
+"nav.settings.a11y" = "App preferences and configuration";
+
+/* Common Actions
+   Used throughout the app for consistent terminology */
+"action.cancel" = "Cancel";
+"action.save" = "Save";
+"action.delete" = "Delete";
+"action.share" = "Share";
+"action.edit" = "Edit";
+
+/* Accessibility Actions
+   Additional context for VoiceOver users */
+"action.cancel.a11y" = "Cancel current operation";
+"action.save.a11y" = "Save current changes";
+"action.delete.a11y" = "Delete selected item";
+"action.share.a11y" = "Share selected content";
+"action.edit.a11y" = "Edit selected item";
+
+/* Error Messages
+   Localized error messages with accessibility considerations */
+"error.generic" = "Something went wrong. Please try again.";
+"error.network" = "Network connection lost. Please check your connection.";
+"error.upload" = "Unable to upload content. Please try again.";
+"error.storage" = "Insufficient storage space.";
+
+/* Accessibility Error Messages
+   Enhanced context for VoiceOver users */
+"error.generic.a11y" = "An error occurred. Double tap to try again.";
+"error.network.a11y" = "Network connection lost. Double tap to retry connection.";
+"error.upload.a11y" = "Content upload failed. Double tap to try uploading again.";
+"error.storage.a11y" = "Not enough storage space. Double tap to manage storage.";
+
+/* Content Categories
+   Used in library organization and search */
+"category.photos" = "Photos";
+"category.videos" = "Videos";
+"category.favorites" = "Favorites";
+"category.recent" = "Recent";
+"category.shared" = "Shared";
+
+/* Accessibility Category Labels
+   Enhanced context for VoiceOver users */
+"category.photos.a11y" = "Photo collection, double tap to view";
+"category.videos.a11y" = "Video collection, double tap to view";
+"category.favorites.a11y" = "Favorite items, double tap to view";
+"category.recent.a11y" = "Recently added content, double tap to view";
+"category.shared.a11y" = "Shared content, double tap to view";
+
+/* Settings Categories
+   Used in settings screen */
+"settings.general" = "General";
+"settings.privacy" = "Privacy";
+"settings.notifications" = "Notifications";
+"settings.storage" = "Storage";
+"settings.about" = "About";
+
+/* Accessibility Settings Labels
+   Enhanced context for VoiceOver users */
+"settings.general.a11y" = "General settings, double tap to open";
+"settings.privacy.a11y" = "Privacy settings, double tap to open";
+"settings.notifications.a11y" = "Notification settings, double tap to open";
+"settings.storage.a11y" = "Storage settings, double tap to open";
+"settings.about.a11y" = "About MemoryReel, double tap to open";
+
+/* Language Selection
+   Used in language settings */
+"language.english" = "English";
+"language.spanish" = "Español";
+"language.french" = "Français";
+"language.german" = "Deutsch";
+"language.chinese" = "中文";
+
+/* Accessibility Language Labels
+   Enhanced context for VoiceOver users */
+"language.english.a11y" = "Switch to English language";
+"language.spanish.a11y" = "Switch to Spanish language";
+"language.french.a11y" = "Switch to French language";
+"language.german.a11y" = "Switch to German language";
+"language.chinese.a11y" = "Switch to Chinese language";
+
+/* Time-based Categories
+   Used in content organization */
+"time.today" = "Today";
+"time.yesterday" = "Yesterday";
+"time.this_week" = "This Week";
+"time.this_month" = "This Month";
+"time.this_year" = "This Year";
+
+/* Accessibility Time Labels
+   Enhanced context for VoiceOver users */
+"time.today.a11y" = "Content from today";
+"time.yesterday.a11y" = "Content from yesterday";
+"time.this_week.a11y" = "Content from this week";
+"time.this_month.a11y" = "Content from this month";
+"time.this_year.a11y" = "Content from this year";
