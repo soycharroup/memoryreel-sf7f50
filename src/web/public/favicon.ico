@@ -1,0 +1,47 @@
+[Binary ICO file content with the following specifications]
+
+File Format: ICO (Windows Icon)
+Total File Size: ≤ 10KB
+
+Contains 3 images:
+1. 16x16 pixels, 32-bit RGBA
+2. 32x32 pixels, 32-bit RGBA
+3. 48x48 pixels, 32-bit RGBA
+
+ICO Header:
+- Reserved: 0x0000
+- Type: 0x0001 (ICO)
+- Count: 0x0003 (3 images)
+
+Image Directory Entries:
+1. 16x16:
+   - Width: 16
+   - Height: 16
+   - ColorCount: 0
+   - Reserved: 0
+   - Planes: 1
+   - BitCount: 32
+   - SizeInBytes: [size]
+   - FileOffset: [offset]
+
+2. 32x32:
+   - Width: 32
+   - Height: 32
+   - ColorCount: 0
+   - Reserved: 0
+   - Planes: 1
+   - BitCount: 32
+   - SizeInBytes: [size]
+   - FileOffset: [offset]
+
+3. 48x48:
+   - Width: 48
+   - Height: 48
+   - ColorCount: 0
+   - Reserved: 0
+   - Planes: 1
+   - BitCount: 32
+   - SizeInBytes: [size]
+   - FileOffset: [offset]
+
+[Followed by optimized PNG-compressed image data for each resolution]
