@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    MemoryReel Android TV Main Layout
+    Implements Netflix-style interface with content carousels
+    Using androidx.leanback:leanback:1.0.0
+-->
+<androidx.leanback.widget.BrowseFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/browse_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.MemoryReel.TV"
+    android:keepScreenOn="true">
+
+    <androidx.leanback.widget.VerticalGridView
+        android:id="@+id/content_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:clipToPadding="false"
+        android:padding="@dimen/tv_content_padding"
+        android:importantForAccessibility="yes">
+
+        <!-- Search Bar -->
+        <androidx.leanback.widget.SearchBar
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:contentDescription="@string/search_memories"
+            android:nextFocusDown="@id/recently_added_carousel"
+            style="@style/Widget.MemoryReel.TV.SearchBar"/>
+
+        <!-- Recently Added Carousel -->
+        <androidx.leanback.widget.HorizontalGridView
+            android:id="@+id/recently_added_carousel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:contentDescription="@string/recently_added"
+            android:nextFocusUp="@id/search_bar"
+            android:nextFocusDown="@id/this_day_carousel"
+            android:paddingTop="@dimen/tv_carousel_padding"
+            android:paddingBottom="@dimen/tv_carousel_padding"
+            android:clipToPadding="false"
+            app:rowHeight="@dimen/tv_card_height"
+            style="@style/Widget.MemoryReel.TV.Carousel"/>
+
+        <!-- This Day in History Carousel -->
+        <androidx.leanback.widget.HorizontalGridView
+            android:id="@+id/this_day_carousel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:contentDescription="@string/this_day_in_history"
+            android:nextFocusUp="@id/recently_added_carousel"
+            android:nextFocusDown="@id/family_collections_carousel"
+            android:paddingTop="@dimen/tv_carousel_padding"
+            android:paddingBottom="@dimen/tv_carousel_padding"
+            android:clipToPadding="false"
+            app:rowHeight="@dimen/tv_card_height"
+            style="@style/Widget.MemoryReel.TV.Carousel"/>
+
+        <!-- Family Collections Carousel -->
+        <androidx.leanback.widget.HorizontalGridView
+            android:id="@+id/family_collections_carousel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:contentDescription="@string/family_collections"
+            android:nextFocusUp="@id/this_day_carousel"
+            android:nextFocusDown="@id/ai_highlights_carousel"
+            android:paddingTop="@dimen/tv_carousel_padding"
+            android:paddingBottom="@dimen/tv_carousel_padding"
+            android:clipToPadding="false"
+            app:rowHeight="@dimen/tv_card_height"
+            style="@style/Widget.MemoryReel.TV.Carousel"/>
+
+        <!-- AI Generated Highlights Carousel -->
+        <androidx.leanback.widget.HorizontalGridView
+            android:id="@+id/ai_highlights_carousel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:contentDescription="@string/ai_generated_highlights"
+            android:nextFocusUp="@id/family_collections_carousel"
+            android:paddingTop="@dimen/tv_carousel_padding"
+            android:paddingBottom="@dimen/tv_carousel_padding"
+            android:clipToPadding="false"
+            app:rowHeight="@dimen/tv_card_height"
+            style="@style/Widget.MemoryReel.TV.Carousel"/>
+
+    </androidx.leanback.widget.VerticalGridView>
+
+</androidx.leanback.widget.BrowseFrameLayout>
