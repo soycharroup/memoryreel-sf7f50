@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Core App Identity -->
+    <key>CFBundleIdentifier</key>
+    <string>com.memoryreel</string>
+    <key>CFBundleDisplayName</key>
+    <string>MemoryReel</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+
+    <!-- Scene Configuration -->
+    <key>UIApplicationSceneManifest</key>
+    <dict>
+        <key>UIApplicationSupportsMultipleScenes</key>
+        <false/>
+        <key>UISceneConfigurations</key>
+        <dict>
+            <key>UIWindowSceneSessionRoleApplication</key>
+            <array>
+                <dict>
+                    <key>UISceneConfigurationName</key>
+                    <string>Default Configuration</string>
+                    <key>UISceneDelegateClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+                </dict>
+            </array>
+        </dict>
+    </dict>
+
+    <!-- Required Device Capabilities -->
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>armv7</string>
+        <string>camera</string>
+        <string>video-camera</string>
+        <string>wifi</string>
+        <string>location-services</string>
+        <string>metal</string>
+        <string>arkit</string>
+        <string>photokit-framework</string>
+    </array>
+
+    <!-- Background Execution Modes -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+        <string>processing</string>
+        <string>audio</string>
+    </array>
+
+    <!-- Privacy Permission Descriptions -->
+    <key>NSCameraUsageDescription</key>
+    <string>MemoryReel needs access to your camera to capture high-quality photos and videos (up to 4K) for your family memories</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>MemoryReel needs access to your photo library to import and organize your existing photos and videos into family collections</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>MemoryReel uses your location to enhance your memories with precise location tagging and create location-based collections</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>MemoryReel needs access to your microphone to record high-quality audio with your videos and enable voice search features</string>
+    <key>NSFaceIDUsageDescription</key>
+    <string>MemoryReel uses Face ID to securely protect your family memories and enable quick access to your content</string>
+
+    <!-- App Transport Security -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <false/>
+        <key>NSRequiresCertificateTransparency</key>
+        <true/>
+    </dict>
+
+    <!-- Localization Support -->
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>en</string>
+        <string>es</string>
+        <string>fr</string>
+        <string>de</string>
+        <string>zh</string>
+    </array>
+
+    <!-- Build Settings -->
+    <key>TARGETED_DEVICE_FAMILY</key>
+    <string>1,2</string>
+    <key>DEVELOPMENT_TEAM</key>
+    <string>MEMORYREEL_TEAM_ID</string>
+    <key>CODE_SIGN_STYLE</key>
+    <string>Automatic</string>
+    <key>ENABLE_BITCODE</key>
+    <false/>
+    <key>SWIFT_VERSION</key>
+    <string>5.0</string>
+</dict>
+</plist>
