@@ -1,0 +1,120 @@
+#!/bin/sh
+
+# MemoryReel Gradle wrapper script
+# Optimized for media processing and Android/Android TV builds
+# Requires: JDK 11+, Android SDK, Android TV SDK components
+
+# Fail on any error
+set -e
+
+warn() {
+    echo "$*" >&2
+}
+
+die() {
+    echo "$*" >&2
+    exit 1
+}
+
+# Enhanced environment validation and initialization
+init() {
+    # Resolve APP_HOME directory with physical path resolution
+    APP_HOME="`pwd -P`"
+    
+    # Validate Java installation
+    if ! command -v java >/dev/null 2>&1; then
+        die "ERROR: Java is not installed or not in PATH
+Please install JDK 11 or higher:
+  - macOS: brew install openjdk@11
+  - Linux: sudo apt-get install openjdk-11-jdk
+  - Manual: https://adoptopenjdk.net/"
+    fi
+
+    # Validate Java version (minimum JDK 11)
+    JAVA_VERSION=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d'.' -f1)
+    if [ "$JAVA_VERSION" -lt "11" ]; then
+        die "ERROR: Java 11 or higher is required (found version $JAVA_VERSION)"
+    fi
+
+    # Validate disk space (minimum 10GB)
+    AVAILABLE_SPACE=$(df -k . | awk 'NR==2 {print $4}')
+    if [ "$AVAILABLE_SPACE" -lt 10485760 ]; then # 10GB in KB
+        die "ERROR: Insufficient disk space. Minimum 10GB required"
+    fi
+
+    # Validate Android SDK installation
+    if [ -z "$ANDROID_HOME" ] && [ -z "$ANDROID_SDK_ROOT" ]; then
+        die "ERROR: Android SDK not found. Please set ANDROID_HOME or ANDROID_SDK_ROOT"
+    fi
+
+    # Set enhanced memory settings for media processing
+    DEFAULT_JVM_OPTS='"$DEFAULT_JVM_OPTS" "-Xmx4g" "-Xms2g" "-XX:MaxMetaspaceSize=1g" "-XX:+HeapDumpOnOutOfMemoryError"'
+    
+    # Configure Gradle daemon and parallel execution
+    GRADLE_OPTS='"$GRADLE_OPTS" "-Dorg.gradle.daemon=true" "-Dorg.gradle.parallel=true" "-Dorg.gradle.caching=true"'
+
+    # Set up classpath
+    CLASSPATH="$APP_HOME/gradle/wrapper/gradle-wrapper.jar"
+}
+
+# Enhanced Gradle command execution with monitoring
+execute() {
+    # Initialize build environment
+    init
+
+    # Set up Java command with optimized settings
+    JAVACMD="java"
+    if [ -n "$JAVA_HOME" ]; then
+        if [ -x "$JAVA_HOME/jre/sh/java" ]; then
+            JAVACMD="$JAVA_HOME/jre/sh/java"
+        else
+            JAVACMD="$JAVA_HOME/bin/java"
+        fi
+        if [ ! -x "$JAVACMD" ]; then
+            die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME"
+        fi
+    fi
+
+    # Monitor system resources during build
+    monitor_resources() {
+        while true; do
+            MEMORY_USAGE=$(ps -o rss= -p $$ | awk '{print $1/1024 "MB"}')
+            echo "Current memory usage: $MEMORY_USAGE" >&2
+            sleep 30
+        done
+    }
+    monitor_resources &
+    MONITOR_PID=$!
+
+    # Execute Gradle with enhanced error handling
+    set +e
+    "$JAVACMD" $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS \
+        -classpath "$CLASSPATH" \
+        org.gradle.wrapper.GradleWrapperMain "$@"
+    RESULT=$?
+    set -e
+
+    # Stop resource monitoring
+    kill $MONITOR_PID >/dev/null 2>&1
+
+    # Handle build failures
+    if [ $RESULT -ne 0 ]; then
+        if grep -q "OutOfMemoryError" gradle-build.log 2>/dev/null; then
+            die "ERROR: Build failed due to insufficient memory. Try reducing parallel jobs or increasing memory settings"
+        elif grep -q "Execution failed for task" gradle-build.log 2>/dev/null; then
+            die "ERROR: Build task execution failed. Check gradle-build.log for details"
+        else
+            die "ERROR: Build failed with exit code $RESULT"
+        fi
+    fi
+
+    return $RESULT
+}
+
+# Validate script is being run from correct location
+if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ]; then
+    die "ERROR: gradle-wrapper.jar not found. Please run from project root directory"
+fi
+
+# Execute Gradle command with provided arguments
+execute "$@"
