@@ -1,0 +1,46 @@
+{
+  "validation": {
+    "invalidEmail": "Please enter a valid email address",
+    "invalidPassword": "Password must be at least 8 characters and include uppercase, lowercase, number and special character",
+    "invalidMediaType": "Unsupported media file type. Please upload only images or videos",
+    "invalidMediaSize": "File size exceeds maximum allowed limit",
+    "requiredField": "This field is required",
+    "invalidInput": "Please check your input and try again"
+  },
+  "authentication": {
+    "invalidCredentials": "Invalid email or password",
+    "accountLocked": "Your account has been locked. Please contact support",
+    "sessionExpired": "Your session has expired. Please log in again",
+    "mfaRequired": "Two-factor authentication is required",
+    "mfaInvalid": "Invalid authentication code",
+    "tokenExpired": "Authentication token has expired"
+  },
+  "authorization": {
+    "insufficientPermissions": "You don't have permission to perform this action",
+    "accountSuspended": "Your account has been suspended",
+    "libraryAccessDenied": "You don't have access to this library",
+    "contentAccessDenied": "You don't have access to this content", 
+    "uploadNotAllowed": "You don't have permission to upload content"
+  },
+  "resource": {
+    "notFound": "The requested resource was not found",
+    "libraryNotFound": "Library not found",
+    "contentNotFound": "Content not found",
+    "userNotFound": "User not found",
+    "mediaNotFound": "Media file not found"
+  },
+  "rateLimit": {
+    "tooManyRequests": "Too many requests. Please try again later",
+    "uploadLimit": "Upload limit reached. Please try again later",
+    "searchLimit": "Search limit reached. Please try again later",
+    "apiLimit": "API request limit reached. Please try again later"
+  },
+  "server": {
+    "internalError": "An internal server error occurred",
+    "serviceUnavailable": "Service is temporarily unavailable",
+    "databaseError": "Database operation failed",
+    "aiProcessingError": "AI processing failed",
+    "storageError": "Storage operation failed",
+    "networkError": "A network error occurred"
+  }
+}
