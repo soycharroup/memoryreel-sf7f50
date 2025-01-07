@@ -1,0 +1,128 @@
+{
+  "configurations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "options": {
+        "targetForVariableExpansion": {
+          "containerPath": "container:MemoryReel.xcodeproj",
+          "identifier": "MemoryReel",
+          "name": "MemoryReel"
+        },
+        "language": "en",
+        "region": "US",
+        "testExecutionOrdering": "random",
+        "testTimeoutMultiplier": 1.5,
+        "maximumTestRepetitions": 3,
+        "testRepetitionMode": "retryOnFailure",
+        "codeCoverage": true,
+        "environmentVariables": {
+          "TEST_ENV": "CI",
+          "NETWORK_STUB": "true",
+          "AI_MOCK": "true",
+          "ANALYTICS_DISABLED": "true",
+          "LOG_LEVEL": "verbose"
+        }
+      }
+    }
+  ],
+  "defaultOptions": {
+    "codeCoverage": true,
+    "targetForVariableExpansion": {
+      "containerPath": "container:MemoryReel.xcodeproj",
+      "identifier": "MemoryReel",
+      "name": "MemoryReel"
+    }
+  },
+  "testTargets": [
+    {
+      "target": {
+        "containerPath": "container:MemoryReel.xcodeproj",
+        "identifier": "MemoryReelTests",
+        "name": "MemoryReelTests"
+      },
+      "enabled": true,
+      "parallelizable": true,
+      "skippedTests": [],
+      "testExecutionOrdering": "random",
+      "gatherMetricsUntilFirstFailure": true,
+      "testTimeoutMultiplier": 1.5,
+      "maximumTestRepetitions": 3,
+      "testRepetitionMode": "retryOnFailure"
+    },
+    {
+      "target": {
+        "containerPath": "container:MemoryReel.xcodeproj",
+        "identifier": "MemoryReelTVTests",
+        "name": "MemoryReelTVTests"
+      },
+      "enabled": true,
+      "parallelizable": true,
+      "skippedTests": [],
+      "testExecutionOrdering": "random",
+      "gatherMetricsUntilFirstFailure": true,
+      "testTimeoutMultiplier": 1.5,
+      "maximumTestRepetitions": 3,
+      "testRepetitionMode": "retryOnFailure"
+    }
+  ],
+  "version": 1,
+  "name": "MemoryReel Test Plan",
+  "testConfigurations": [
+    {
+      "name": "Default",
+      "testTargets": [
+        {
+          "target": {
+            "containerPath": "container:MemoryReel.xcodeproj",
+            "identifier": "MemoryReelTests",
+            "name": "MemoryReelTests"
+          },
+          "enabled": true,
+          "skipped": false,
+          "parallelizable": true
+        },
+        {
+          "target": {
+            "containerPath": "container:MemoryReel.xcodeproj",
+            "identifier": "MemoryReelTVTests",
+            "name": "MemoryReelTVTests"
+          },
+          "enabled": true,
+          "skipped": false,
+          "parallelizable": true
+        }
+      ],
+      "language": "en",
+      "region": "US",
+      "locationSimulation": true,
+      "testExecutionOrdering": "random",
+      "testTimeoutMultiplier": 1.5,
+      "maximumTestRepetitions": 3,
+      "testRepetitionMode": "retryOnFailure",
+      "codeCoverage": true,
+      "environmentVariables": {
+        "TEST_ENV": "CI",
+        "NETWORK_STUB": "true",
+        "AI_MOCK": "true",
+        "ANALYTICS_DISABLED": "true",
+        "LOG_LEVEL": "verbose"
+      },
+      "targetDevices": [
+        "iPhone 12",
+        "iPhone 13 Pro",
+        "iPad Pro (12.9-inch)",
+        "Apple TV 4K",
+        "Apple TV HD"
+      ],
+      "osVersions": [
+        "iOS 14.0",
+        "iOS 15.0",
+        "iOS 16.0",
+        "tvOS 14.0",
+        "tvOS 15.0",
+        "tvOS 16.0"
+      ]
+    }
+  ]
+}
