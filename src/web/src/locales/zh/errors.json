@@ -1,0 +1,46 @@
+{
+  "validation": {
+    "invalidEmail": "请输入有效的电子邮件地址。",
+    "invalidPassword": "密码必须至少8个字符，包含大写字母、小写字母、数字和特殊字符。",
+    "invalidMediaType": "不支持的媒体文件类型。请仅上传图片或视频文件。",
+    "invalidMediaSize": "文件大小超过允许的最大限制。",
+    "requiredField": "此字段为必填项。",
+    "invalidInput": "请检查您的输入并重试。"
+  },
+  "authentication": {
+    "invalidCredentials": "邮箱或密码无效。",
+    "accountLocked": "您的账户已被锁定。请联系客服。",
+    "sessionExpired": "您的会话已过期。请重新登录。",
+    "mfaRequired": "需要双重认证。",
+    "mfaInvalid": "认证码无效。",
+    "tokenExpired": "认证令牌已过期。"
+  },
+  "authorization": {
+    "insufficientPermissions": "您没有执行此操作的权限。",
+    "accountSuspended": "您的账户已被暂停。",
+    "libraryAccessDenied": "您无权访问此图库。",
+    "contentAccessDenied": "您无权访问此内容。",
+    "uploadNotAllowed": "您没有上传内容的权限。"
+  },
+  "resource": {
+    "notFound": "未找到请求的资源。",
+    "libraryNotFound": "未找到图库。",
+    "contentNotFound": "未找到内容。",
+    "userNotFound": "未找到用户。",
+    "mediaNotFound": "未找到媒体文件。"
+  },
+  "rateLimit": {
+    "tooManyRequests": "请求过于频繁。请稍后重试。",
+    "uploadLimit": "已达到上传限制。请稍后重试。",
+    "searchLimit": "已达到搜索限制。请稍后重试。",
+    "apiLimit": "已达到API请求限制。请稍后重试。"
+  },
+  "server": {
+    "internalError": "发生内部服务器错误。",
+    "serviceUnavailable": "服务暂时不可用。",
+    "databaseError": "数据库操作失败。",
+    "aiProcessingError": "AI处理失败。",
+    "storageError": "存储操作失败。",
+    "networkError": "发生网络错误。"
+  }
+}
