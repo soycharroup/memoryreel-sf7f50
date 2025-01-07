@@ -1,0 +1,127 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memoryreel-web
+  namespace: memoryreel
+  labels:
+    app: memoryreel
+    component: web
+    environment: ${ENV}
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "80"
+    prometheus.io/path: "/metrics"
+
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  
+  selector:
+    matchLabels:
+      app: memoryreel
+      component: web
+  
+  template:
+    metadata:
+      labels:
+        app: memoryreel
+        component: web
+        region: ${REGION}
+    
+    spec:
+      # Node affinity for regional deployment
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: topology.kubernetes.io/region
+                operator: In
+                values:
+                - ${REGION}
+        
+        # Pod anti-affinity for high availability
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: memoryreel
+                  component: web
+              topologyKey: topology.kubernetes.io/zone
+      
+      # Topology spread for balanced distribution
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: topology.kubernetes.io/zone
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app: memoryreel
+            component: web
+      
+      # Container specification
+      containers:
+      - name: web
+        image: ${REGISTRY}/memoryreel-web:${TAG}
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        
+        env:
+        - name: NODE_ENV
+          value: ${ENV}
+        - name: REGION
+          value: ${REGION}
+        
+        # Resource management
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        
+        # Health monitoring
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
+        
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+        
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 30
+      
+      # Security context
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101
+        fsGroup: 101
+        seccompProfile:
+          type: RuntimeDefault
