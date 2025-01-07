@@ -1,0 +1,158 @@
+name: iOS & tvOS CI/CD
+
+on:
+  push:
+    branches: [ main, develop, 'feature/*', 'hotfix/*' ]
+    paths:
+      - 'src/ios/**'
+      - '.github/workflows/ios.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'src/ios/**'
+  release:
+    types: [created, edited]
+
+env:
+  DEVELOPER_APP_ID: ${{ secrets.APPLE_DEVELOPER_APP_ID }}
+  DEVELOPER_APP_IDENTIFIER: ${{ secrets.APPLE_DEVELOPER_APP_IDENTIFIER }}
+  PROVISIONING_PROFILE_SPECIFIER: ${{ secrets.PROVISIONING_PROFILE_SPECIFIER }}
+  APPLE_DEVELOPER_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+  APPLE_DEVELOPER_EMAIL: ${{ secrets.APPLE_DEVELOPER_EMAIL }}
+  FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+  MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+  BUILD_NUMBER: ${{ github.run_number }}
+  ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+
+jobs:
+  build_and_test:
+    name: Build & Test
+    runs-on: macos-latest
+    if: github.event_name != 'release'
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      - name: Setup Ruby environment
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '14.0'
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/Library/Caches/CocoaPods
+            ~/Library/Developer/Xcode/DerivedData
+            Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+          bundle exec pod install
+        working-directory: src/ios
+
+      - name: Run iOS tests
+        run: |
+          bundle exec fastlane ios test_ios
+        working-directory: src/ios
+        env:
+          FASTLANE_SKIP_UPDATE_CHECK: true
+
+      - name: Run tvOS tests
+        run: |
+          bundle exec fastlane tvos test_tvos
+        working-directory: src/ios
+        env:
+          FASTLANE_SKIP_UPDATE_CHECK: true
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: test-results
+          path: |
+            src/ios/test_output
+            src/ios/coverage
+          retention-days: 7
+
+  deploy:
+    name: Deploy
+    runs-on: macos-latest
+    if: github.event_name == 'release'
+    needs: build_and_test
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      - name: Setup Ruby environment
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '14.0'
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+          bundle exec pod install
+        working-directory: src/ios
+
+      - name: Setup code signing
+        run: |
+          bundle exec fastlane ios setup_signing
+        working-directory: src/ios
+        env:
+          MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
+          MATCH_GIT_BASIC_AUTH: ${{ secrets.MATCH_GIT_BASIC_AUTH }}
+
+      - name: Build iOS app
+        run: |
+          bundle exec fastlane ios build_ios version:${{ github.event.release.tag_name }} build_number:${{ env.BUILD_NUMBER }}
+        working-directory: src/ios
+
+      - name: Build tvOS app
+        run: |
+          bundle exec fastlane tvos build_tvos version:${{ github.event.release.tag_name }} build_number:${{ env.BUILD_NUMBER }}
+        working-directory: src/ios
+
+      - name: Deploy to TestFlight
+        run: |
+          bundle exec fastlane ios deploy_ios version:${{ github.event.release.tag_name }} phase_percentage:25 rollback_version:${{ github.event.release.target_commitish }}
+          bundle exec fastlane tvos deploy_tvos version:${{ github.event.release.tag_name }} phase_percentage:25 rollback_version:${{ github.event.release.target_commitish }}
+        working-directory: src/ios
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: |
+            src/ios/build/ios/*.ipa
+            src/ios/build/tvos/*.ipa
+          retention-days: 7
