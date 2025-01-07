@@ -1,0 +1,97 @@
+# Dependencies
+Pods/
+Carthage/
+.swiftpm/
+node_modules/
+vendor/bundle/
+.bundle/
+
+# Build
+build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xcarchive
+*.xcframework/
+
+# IDE
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+*.xcuserstate
+.idea/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+timeline.xctimeline
+playground.xcworkspace
+
+# System
+.DS_Store
+*.swp
+*.lock
+!Podfile.lock
+profile
+._*
+.Spotlight-V100
+.Trashes
+*.log
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+fastlane/builds
+
+# React Native
+ios/Pods/
+ios/build/
+*.jsbundle
+*.jsbundle.map
+main.jsbundle
+ios/assets/
+ios/main.jsbundle.meta
+
+# Security
+*.mobileprovision
+*.cer
+*.p12
+*.key
+*.pem
+GoogleService-Info.plist
+ApiKeys.plist
+Secrets.swift
+*.env
+*.env.*
+
+# Testing
+coverage/
+test-reports/
+*.xcresult/
+*.test
+*.profraw
+*.gcno
+*.gcda
+
+# Media
+*.mov
+*.mp4
+*.avi
+local-media-cache/
+preview-assets/
+sample-content/
+
+# AI Models
+*.mlmodel
+*.mlpackage
+model-cache/
+ai-models/local/
+CoreML-temp/
