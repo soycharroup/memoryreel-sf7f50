@@ -1,0 +1,53 @@
+.git
+.git*
+
+# Dependencies
+node_modules
+.npm/
+npm-debug.log
+
+# Build outputs
+dist
+coverage
+
+# Environment and configuration
+.env
+.env.*
+*config*.json
+
+# Logs and debugging
+*.log
+npm-debug.log*
+
+# Test files
+tests
+**/*.test.ts
+**/*.spec.ts
+
+# IDE configurations
+.vscode
+.idea
+
+# Documentation
+*.md
+LICENSE
+
+# Docker files
+.dockerignore
+Dockerfile*
+docker-compose*.yml
+
+# Security files
+*.pem
+*.key
+*.cert
+
+# Scripts and temporary files
+*.sh
+tmp/
+
+# Development artifacts
+coverage/
+.nyc_output
+.eslintcache
+.DS_Store
