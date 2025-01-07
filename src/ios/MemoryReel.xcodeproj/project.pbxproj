@@ -1,0 +1,221 @@
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		/* iOS App */
+		A1001001297B1A0A00000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1001002297B1A0A00000001 /* AppDelegate.swift */; };
+		A1001003297B1A0A00000002 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1001004297B1A0A00000002 /* SceneDelegate.swift */; };
+		A1001005297B1A0A00000003 /* MemoryReelBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A1001006297B1A0A00000003 /* MemoryReelBridge.m */; };
+
+		/* tvOS App */
+		A1002001297B1A0A00000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1002002297B1A0A00000001 /* AppDelegate.swift */; };
+		A1002003297B1A0A00000002 /* TVBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A1002004297B1A0A00000002 /* TVBridge.m */; };
+
+		/* Shared Models */
+		A1003001297B1A0A00000001 /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1003002297B1A0A00000001 /* MediaItem.swift */; };
+		A1003003297B1A0A00000002 /* AIAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1003004297B1A0A00000002 /* AIAnalysis.swift */; };
+		A1003005297B1A0A00000003 /* FaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1003006297B1A0A00000003 /* FaceData.swift */; };
+		A1003007297B1A0A00000004 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1003008297B1A0A00000004 /* Library.swift */; };
+		A1003009297B1A0A00000005 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1003010297B1A0A00000005 /* User.swift */; };
+
+		/* Services */
+		A1004001297B1A0A00000001 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1004002297B1A0A00000001 /* APIService.swift */; };
+		A1004003297B1A0A00000002 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1004004297B1A0A00000002 /* AuthenticationService.swift */; };
+
+		/* Utils */
+		A1005001297B1A0A00000001 /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1005002297B1A0A00000001 /* NetworkUtils.swift */; };
+		A1005003297B1A0A00000002 /* SecurityUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1005004297B1A0A00000002 /* SecurityUtils.swift */; };
+		A1005005297B1A0A00000003 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1005006297B1A0A00000003 /* Logger.swift */; };
+
+		/* Constants */
+		A1006001297B1A0A00000001 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1006002297B1A0A00000001 /* AppConstants.swift */; };
+		A1006003297B1A0A00000002 /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1006004297B1A0A00000002 /* ErrorConstants.swift */; };
+
+		/* TV Services */
+		A1007001297B1A0A00000001 /* TVFocusEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1007002297B1A0A00000001 /* TVFocusEngine.swift */; };
+		A1007003297B1A0A00000002 /* TVNavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1007004297B1A0A00000002 /* TVNavigationManager.swift */; };
+		A1007005297B1A0A00000003 /* TVMediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1007006297B1A0A00000003 /* TVMediaPlayer.swift */; };
+
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		/* iOS App */
+		A1001002297B1A0A00000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A1001004297B1A0A00000002 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A1001006297B1A0A00000003 /* MemoryReelBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemoryReelBridge.m; sourceTree = "<group>"; };
+
+		/* tvOS App */
+		A1002002297B1A0A00000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A1002004297B1A0A00000002 /* TVBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TVBridge.m; sourceTree = "<group>"; };
+
+		/* Shared Models */
+		A1003002297B1A0A00000001 /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
+		A1003004297B1A0A00000002 /* AIAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIAnalysis.swift; sourceTree = "<group>"; };
+		A1003006297B1A0A00000003 /* FaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceData.swift; sourceTree = "<group>"; };
+		A1003008297B1A0A00000004 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		A1003010297B1A0A00000005 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+
+		/* Services */
+		A1004002297B1A0A00000001 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		A1004004297B1A0A00000002 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+
+		/* Utils */
+		A1005002297B1A0A00000001 /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
+		A1005004297B1A0A00000002 /* SecurityUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityUtils.swift; sourceTree = "<group>"; };
+		A1005006297B1A0A00000003 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+
+		/* Constants */
+		A1006002297B1A0A00000001 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		A1006004297B1A0A00000002 /* ErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorConstants.swift; sourceTree = "<group>"; };
+
+		/* TV Services */
+		A1007002297B1A0A00000001 /* TVFocusEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVFocusEngine.swift; sourceTree = "<group>"; };
+		A1007004297B1A0A00000002 /* TVNavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVNavigationManager.swift; sourceTree = "<group>"; };
+		A1007006297B1A0A00000003 /* TVMediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMediaPlayer.swift; sourceTree = "<group>"; };
+
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A2001001297B1A0A00000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A3001001297B1A0A00000001 /* MemoryReel */ = {
+			isa = PBXGroup;
+			children = (
+				A3002001297B1A0A00000001 /* Models */,
+				A3002002297B1A0A00000002 /* Services */,
+				A3002003297B1A0A00000003 /* Utils */,
+				A3002004297B1A0A00000004 /* Constants */,
+				A3002005297B1A0A00000005 /* TVServices */,
+			);
+			path = MemoryReel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4001001297B1A0A00000001 /* MemoryReel-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4001002297B1A0A00000001 /* Build configuration list for PBXNativeTarget "MemoryReel-iOS" */;
+			buildPhases = (
+				A4001003297B1A0A00000001 /* Sources */,
+				A4001004297B1A0A00000001 /* Frameworks */,
+				A4001005297B1A0A00000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MemoryReel-iOS";
+			productName = "MemoryReel-iOS";
+			productType = "com.apple.product-type.application";
+		};
+
+		A4002001297B1A0A00000001 /* MemoryReel-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4002002297B1A0A00000001 /* Build configuration list for PBXNativeTarget "MemoryReel-tvOS" */;
+			buildPhases = (
+				A4002003297B1A0A00000001 /* Sources */,
+				A4002004297B1A0A00000001 /* Frameworks */,
+				A4002005297B1A0A00000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MemoryReel-tvOS";
+			productName = "MemoryReel-tvOS";
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin XCBuildConfiguration section */
+		A5001001297B1A0A00000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+
+		A5001002297B1A0A00000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A6001001297B1A0A00000001 /* Build configuration list for PBXProject "MemoryReel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5001001297B1A0A00000001 /* Debug */,
+				A5001002297B1A0A00000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = A6001002297B1A0A00000001 /* Project object */;
+}
