@@ -1,0 +1,60 @@
+PODS:
+  - React (0.72.4):
+    - React-Core (= 0.72.4)
+    - React-RCTAnimation (= 0.72.4)
+    - React-RCTBlob (= 0.72.4)
+    - React-RCTImage (= 0.72.4)
+    - React-RCTNetwork (= 0.72.4)
+  - React-Core (0.72.4):
+    - React/CoreModules (= 0.72.4)
+    - React/RCTRequired (= 0.72.4)
+    - React/RCTTypeSafety (= 0.72.4)
+  - React-RCTAnimation (0.72.4):
+    - React-Core (= 0.72.4)
+  - React-RCTBlob (0.72.4):
+    - React-Core (= 0.72.4)
+    - React-RCTNetwork (= 0.72.4)
+  - React-RCTImage (0.72.4):
+    - React-Core (= 0.72.4)
+    - React-RCTNetwork (= 0.72.4)
+  - React-RCTNetwork (0.72.4):
+    - React-Core (= 0.72.4)
+  - SDWebImage (5.18.3):
+    - SDWebImage/Core (= 5.18.3)
+  - SDWebImage/Core (5.18.3)
+  - SwiftProtobuf (1.25.1)
+
+DEPENDENCIES:
+  - React (= 0.72.4)
+  - React-Core (= 0.72.4)
+  - React-RCTAnimation (= 0.72.4)
+  - React-RCTBlob (= 0.72.4)
+  - React-RCTImage (= 0.72.4)
+  - React-RCTNetwork (= 0.72.4)
+  - SDWebImage (= 5.18.3)
+  - SwiftProtobuf (= 1.25.1)
+
+SPEC REPOS:
+  trunk:
+    - React
+    - React-Core
+    - React-RCTAnimation
+    - React-RCTBlob
+    - React-RCTImage
+    - React-RCTNetwork
+    - SDWebImage
+    - SwiftProtobuf
+
+SPEC CHECKSUMS:
+  React: 3e5b3962f27b7334c556c455264c3c8c60c7d2d2
+  React-Core: 4c13dd381dfec441a5df15cf92c0f4d65e5dd87c
+  React-RCTAnimation: 7c5d149b9c72f2a8bf3bd46f6f0e2a2f7d6c5b6
+  React-RCTBlob: 9b846a09f5aabc1e7f34545f8d3253e52659daaf
+  React-RCTImage: 6c0c1f91a2e903e5a0b3897f1f0a2b6c61d75c7
+  React-RCTNetwork: c3d7d3b7704c1c56a8ea0c18ccd5732ad7c11c95
+  SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
+  SwiftProtobuf: 69f02cd54fb01d06bce41954c5decb16dd077401
+
+PODFILE CHECKSUM: 8a3691f9e62d4a80c9546efcde6c0e76af1d7c25
+
+COCOAPODS: 1.13.0
