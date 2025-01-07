@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js">
+<head>
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Viewport configuration -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- Theme color for browser chrome -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+
+    <!-- Primary meta tags -->
+    <meta name="description" content="MemoryReel - AI-powered digital memory management platform for families">
+    <meta name="application-name" content="MemoryReel">
+
+    <!-- Mobile web app capable -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="MemoryReel">
+    <meta property="og:description" content="Organize, discover, and share your family memories">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/assets/images/social-share.jpg">
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Security headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.memoryreel.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+
+    <!-- Title -->
+    <title>MemoryReel</title>
+
+    <!-- Preconnect to critical domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://api.memoryreel.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" crossorigin>
+    <link rel="preload" href="/assets/images/logo.svg" as="image" importance="high">
+
+    <!-- Manifest and icons -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/icons/app-icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/icons/app-icon-180x180.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Platform detection script -->
+    <script>
+        // Remove no-js class
+        document.documentElement.classList.remove('no-js');
+
+        // Platform detection
+        const isTv = navigator.userAgent.includes('TV');
+        document.documentElement.setAttribute('data-platform', isTv ? 'tv' : 'web');
+
+        // Set viewport based on platform
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (isTv) {
+            viewport.setAttribute('content', 'width=1920, initial-scale=1.0');
+        }
+    </script>
+</head>
+<body>
+    <!-- Application root -->
+    <div id="root" role="application" aria-label="MemoryReel Application" data-platform="auto-detect"></div>
+
+    <!-- Noscript fallback -->
+    <noscript>
+        <div class="noscript-message">
+            JavaScript is required to run this application. Please enable JavaScript in your browser settings.
+        </div>
+    </noscript>
+
+    <!-- Application entry point -->
+    <script type="module" src="./src/index.tsx" defer></script>
+</body>
+</html>
