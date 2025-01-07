@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    MemoryReel Android TV Themes
+    Implements Netflix-style interface optimized for 10-foot viewing
+    Using androidx.leanback:leanback:1.0.0
+-->
+<resources>
+    <!-- Base TV theme for light mode -->
+    <style name="Theme.MemoryReel.TV" parent="@style/Theme.Leanback">
+        <!-- Window and status bar -->
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+
+        <!-- Core colors -->
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:textColorPrimary">@color/highContrastText</item>
+
+        <!-- TV-specific focus and navigation -->
+        <item name="tvFocusHighlightColor">@color/tvFocusHighlight</item>
+        <item name="android:focusedByDefault">true</item>
+        <item name="android:defaultFocusHighlightEnabled">true</item>
+        <item name="android:focusHighlightEnabled">true</item>
+
+        <!-- Content carousel styling -->
+        <item name="carouselStyle">@style/Widget.MemoryReel.TV.Carousel</item>
+        <item name="mediaCardStyle">@style/Widget.MemoryReel.TV.MediaCard</item>
+        <item name="focusHighlightStyle">@style/Widget.MemoryReel.TV.FocusHighlight</item>
+
+        <!-- Search and navigation -->
+        <item name="searchBarStyle">@style/Widget.MemoryReel.TV.SearchBar</item>
+        <item name="navigationStyle">@style/Widget.MemoryReel.TV.Navigation</item>
+
+        <!-- Accessibility support -->
+        <item name="android:contentDescription">true</item>
+        <item name="android:importantForAccessibility">yes</item>
+        <item name="android:accessibilityHeading">true</item>
+        <item name="android:accessibilityLiveRegion">polite</item>
+    </style>
+
+    <!-- Dark theme variant -->
+    <style name="Theme.MemoryReel.TV.Dark" parent="Theme.MemoryReel.TV">
+        <!-- Override colors for dark theme -->
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:textColorPrimary">@color/highContrastText</item>
+        
+        <!-- Enhanced focus visibility for dark theme -->
+        <item name="tvFocusHighlightColor">@color/tvFocusHighlight</item>
+        <item name="android:focusHighlightAlpha">1.0</item>
+
+        <!-- Media card and carousel backgrounds -->
+        <item name="mediaCardBackgroundColor">@color/mediaCardBackground</item>
+        <item name="carouselBackgroundColor">@color/carouselBackground</item>
+    </style>
+
+    <!-- High contrast theme for accessibility -->
+    <style name="Theme.MemoryReel.TV.HighContrast" parent="Theme.MemoryReel.TV">
+        <!-- Maximum contrast colors -->
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+
+        <!-- Enhanced focus states -->
+        <item name="tvFocusHighlightColor">@android:color/white</item>
+        <item name="android:focusHighlightAlpha">1.0</item>
+        <item name="android:focusHighlightScale">1.2</item>
+
+        <!-- Increased text sizes -->
+        <item name="android:textSize">18sp</item>
+        <item name="android:titleTextSize">24sp</item>
+
+        <!-- Accessibility enhancements -->
+        <item name="android:importantForAccessibility">yes</item>
+        <item name="android:accessibilityHeading">true</item>
+        <item name="android:accessibilityLiveRegion">assertive</item>
+        <item name="android:contentDescription">true</item>
+    </style>
+
+    <!-- Base dialog theme -->
+    <style name="Theme.MemoryReel.TV.Dialog" parent="@style/Theme.Leanback.Dialog">
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/highContrastText</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+
+    <!-- Search overlay theme -->
+    <style name="Theme.MemoryReel.TV.SearchOverlay" parent="Theme.MemoryReel.TV">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+</resources>
