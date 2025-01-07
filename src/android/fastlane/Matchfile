@@ -1,0 +1,148 @@
+# Fastlane Match 0.1.x configuration for MemoryReel Android app signing
+# Manages secure certificate storage and signing for mobile and TV variants
+
+# Import required plugins
+require 'fastlane-plugin-match'
+
+# Reference app package from Appfile
+app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:package_name)
+
+# Git repository configuration for secure certificate storage
+git_url("git@github.com:memoryreel/certificates.git")
+storage_mode("git")
+git_branch("main")
+
+# Platform and environment settings
+platform("android")
+type("development") # Can be overridden by environment
+readonly(true) # Prevents accidental certificate modifications
+verbose(true) # Enhanced logging for audit trail
+
+# App variant configurations
+app_variants = {
+  mobile: {
+    app_identifier: "#{app_identifier}.mobile",
+    keystore_name: "memoryreel_mobile.keystore",
+    key_alias: "memoryreel_mobile_key"
+  },
+  tv: {
+    app_identifier: "#{app_identifier}.tv",
+    keystore_name: "memoryreel_tv.keystore",
+    key_alias: "memoryreel_tv_key"
+  }
+}
+
+# Certificate rotation and security policies
+certificate_config = {
+  validity_period: 365 * 3, # 3 years validity
+  key_size: 4096,
+  signature_algorithm: "SHA256withRSA",
+  backup_enabled: true,
+  rotation_notification_days: 90
+}
+
+# Environment-specific configurations
+environments = {
+  development: {
+    force_for_new_devices: true,
+    skip_confirmation: true,
+    shallow_clone: true
+  },
+  staging: {
+    force_for_new_devices: false,
+    skip_confirmation: false,
+    shallow_clone: false
+  },
+  production: {
+    force_for_new_devices: false,
+    skip_confirmation: false,
+    shallow_clone: false,
+    readonly: true
+  }
+}
+
+# Match configuration for keystore management
+match_config = {
+  keystore_name: -> (variant) { app_variants[variant][:keystore_name] },
+  key_alias: -> (variant) { app_variants[variant][:key_alias] },
+  keystore_password: ENV["MATCH_KEYSTORE_PASSWORD"],
+  key_password: ENV["MATCH_KEY_PASSWORD"]
+}
+
+# Sync certificates action
+@fastlane_action
+def sync_certificates(force: false, readonly: true)
+  UI.message("Syncing certificates for #{app_identifier}")
+  
+  # Verify git access and credentials
+  ensure_git_access
+  
+  # Clone certificate repository
+  clone_options = {
+    git_url: git_url,
+    shallow_clone: environments[type.to_sym][:shallow_clone],
+    branch: git_branch
+  }
+  
+  # Process each app variant
+  app_variants.each do |variant, config|
+    UI.message("Processing #{variant} variant")
+    
+    # Sync keystores
+    sync_options = {
+      type: type,
+      app_identifier: config[:app_identifier],
+      keystore_name: match_config[:keystore_name].call(variant),
+      key_alias: match_config[:key_alias].call(variant),
+      force: force,
+      readonly: readonly
+    }
+    
+    Match::Runner.new.sync_certificates(sync_options)
+  end
+  
+  # Clean up sensitive data
+  cleanup_temp_keychain_if_created
+  UI.success("Certificate sync completed successfully")
+end
+
+# Create new keystore action
+@fastlane_action
+def create_keystore(environment:, variant:, force: false)
+  UI.message("Creating new keystore for #{variant} in #{environment}")
+  
+  unless app_variants.key?(variant.to_sym)
+    UI.user_error!("Invalid variant specified: #{variant}")
+  end
+  
+  variant_config = app_variants[variant.to_sym]
+  
+  # Generate secure keystore
+  keystore_path = create_keystore_file(
+    environment: environment,
+    app_identifier: variant_config[:app_identifier],
+    keystore_name: match_config[:keystore_name].call(variant.to_sym),
+    key_alias: match_config[:key_alias].call(variant.to_sym),
+    validity: certificate_config[:validity_period],
+    key_size: certificate_config[:key_size],
+    signature_algorithm: certificate_config[:signature_algorithm],
+    force: force
+  )
+  
+  # Backup critical signing data if enabled
+  if certificate_config[:backup_enabled]
+    backup_signing_data(keystore_path, environment, variant)
+  end
+  
+  keystore_path
+end
+
+# Export match configuration for other Fastlane actions
+def self.match_config
+  {
+    keystore_name: match_config[:keystore_name],
+    key_alias: match_config[:key_alias],
+    keystore_password: match_config[:keystore_password],
+    key_password: match_config[:key_password]
+  }
+end
