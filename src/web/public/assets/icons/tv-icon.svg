@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg 
+  viewBox="0 0 24 24" 
+  width="24" 
+  height="24" 
+  fill="currentColor" 
+  stroke="currentColor" 
+  stroke-width="2" 
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="TV Interface Icon"
+>
+  <title>MemoryReel TV Interface</title>
+  <desc>Minimalist TV screen icon following Material Design guidelines with enhanced visibility for TV displays</desc>
+  
+  <!-- TV Screen Outer Frame -->
+  <rect 
+    x="2" 
+    y="3" 
+    width="20" 
+    height="14" 
+    rx="2" 
+    fill="transparent" 
+    stroke="currentColor" 
+    stroke-width="2" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"
+  />
+  
+  <!-- TV Stand Base -->
+  <path 
+    d="M8 21h8M12 17v4" 
+    stroke="currentColor" 
+    stroke-width="2" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"
+  />
+  
+  <!-- Screen Content Suggestion (Minimalist) -->
+  <rect 
+    x="4" 
+    y="5" 
+    width="16" 
+    height="10" 
+    rx="1" 
+    fill="transparent" 
+    stroke="currentColor" 
+    stroke-width="1.5" 
+    stroke-opacity="0.5"
+  />
+  
+  <!-- Focus/Selection Indicator (for interactive states) -->
+  <rect 
+    x="1" 
+    y="2" 
+    width="22" 
+    height="20" 
+    rx="3" 
+    fill="none" 
+    stroke="transparent" 
+    stroke-width="2" 
+    class="focus-ring"
+  />
+  
+  <style>
+    @media (min-width: 1440px) {
+      svg {
+        width: 48px;
+        height: 48px;
+      }
+    }
+    @media (min-width: 2160px) {
+      svg {
+        width: 96px;
+        height: 96px;
+      }
+    }
+    .focus-ring:focus-visible {
+      stroke: rgba(255, 255, 255, 0.12);
+    }
+    @media (forced-colors: active) {
+      svg {
+        stroke: CanvasText;
+        fill: CanvasText;
+      }
+    }
+  </style>
+</svg>
