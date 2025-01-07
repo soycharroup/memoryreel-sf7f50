@@ -1,0 +1,83 @@
+{
+  "validation": {
+    "invalidEmail": "Por favor, introduce una dirección de correo electrónico válida",
+    "invalidPassword": "La contraseña debe tener al menos 8 caracteres e incluir mayúsculas, minúsculas, números y caracteres especiales",
+    "invalidMediaType": "Tipo de archivo multimedia no compatible. Por favor, sube solo imágenes o videos",
+    "invalidMediaSize": "El tamaño del archivo excede el límite máximo permitido",
+    "requiredField": "Este campo es obligatorio",
+    "invalidInput": "Por favor, verifica tu entrada e inténtalo de nuevo",
+    "invalidMetadata": "Los metadatos del archivo no son válidos",
+    "invalidTags": "Las etiquetas proporcionadas no son válidas",
+    "invalidFaceData": "Los datos de reconocimiento facial no son válidos",
+    "invalidLibraryName": "El nombre de la biblioteca no es válido"
+  },
+  "authentication": {
+    "invalidCredentials": "Correo electrónico o contraseña inválidos",
+    "accountLocked": "Tu cuenta ha sido bloqueada. Por favor, contacta con soporte",
+    "sessionExpired": "Tu sesión ha expirado. Por favor, inicia sesión de nuevo",
+    "mfaRequired": "Se requiere autenticación de dos factores",
+    "mfaInvalid": "Código de autenticación inválido",
+    "tokenExpired": "El token de autenticación ha expirado",
+    "deviceNotAuthorized": "Este dispositivo no está autorizado",
+    "tvCodeInvalid": "Código de TV inválido",
+    "biometricFailed": "La autenticación biométrica falló"
+  },
+  "authorization": {
+    "insufficientPermissions": "No tienes permiso para realizar esta acción",
+    "accountSuspended": "Tu cuenta ha sido suspendida",
+    "libraryAccessDenied": "No tienes acceso a esta biblioteca",
+    "contentAccessDenied": "No tienes acceso a este contenido",
+    "uploadNotAllowed": "No tienes permiso para subir contenido",
+    "familyOrganizerRequired": "Se requieren permisos de organizador familiar",
+    "sharingLimitExceeded": "Has excedido el límite de compartición",
+    "deviceLimitExceeded": "Has alcanzado el límite de dispositivos"
+  },
+  "resource": {
+    "notFound": "No se encontró el recurso solicitado",
+    "libraryNotFound": "Biblioteca no encontrada",
+    "contentNotFound": "Contenido no encontrado",
+    "userNotFound": "Usuario no encontrado",
+    "mediaNotFound": "Archivo multimedia no encontrado",
+    "collectionNotFound": "Colección no encontrada",
+    "faceDataNotFound": "Datos faciales no encontrados",
+    "metadataNotFound": "Metadatos no encontrados"
+  },
+  "rateLimit": {
+    "tooManyRequests": "Demasiadas solicitudes. Por favor, inténtalo más tarde",
+    "uploadLimit": "Límite de carga alcanzado. Por favor, inténtalo más tarde",
+    "searchLimit": "Límite de búsqueda alcanzado. Por favor, inténtalo más tarde",
+    "apiLimit": "Límite de solicitudes API alcanzado. Por favor, inténtalo más tarde",
+    "aiProcessingLimit": "Límite de procesamiento AI alcanzado",
+    "deviceStreamingLimit": "Límite de transmisión de dispositivos alcanzado"
+  },
+  "server": {
+    "internalError": "Se produjo un error interno del servidor",
+    "serviceUnavailable": "El servicio no está disponible temporalmente",
+    "databaseError": "Error en la operación de la base de datos",
+    "aiProcessingError": "Error en el procesamiento de IA",
+    "storageError": "Error en la operación de almacenamiento",
+    "networkError": "Se produjo un error de red",
+    "cdnError": "Error en la entrega de contenido",
+    "transcodeError": "Error en la transcodificación del medio"
+  },
+  "ai": {
+    "faceRecognitionFailed": "Error en el reconocimiento facial",
+    "sceneAnalysisFailed": "Error en el análisis de escena",
+    "metadataExtractionFailed": "Error en la extracción de metadatos",
+    "contentCategorizationFailed": "Error en la categorización de contenido",
+    "personIdentificationFailed": "Error en la identificación de personas"
+  },
+  "media": {
+    "uploadFailed": "Error en la carga del archivo",
+    "processingFailed": "Error en el procesamiento del archivo",
+    "streamingFailed": "Error en la transmisión del contenido",
+    "downloadFailed": "Error en la descarga del archivo",
+    "formatUnsupported": "Formato de archivo no soportado"
+  },
+  "family": {
+    "inviteExpired": "La invitación familiar ha expirado",
+    "memberLimitExceeded": "Límite de miembros familiares excedido",
+    "organizerRequired": "Se requiere un organizador familiar",
+    "libraryLimitExceeded": "Límite de bibliotecas familiares excedido"
+  }
+}
