@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg 
+  xmlns="http://www.w3.org/2000/svg" 
+  viewBox="0 0 512 512" 
+  preserveAspectRatio="xMidYMid meet"
+  role="img"
+  aria-label="MemoryReel logo"
+  class="memoryreel-icon"
+>
+  <!-- Base circle representing the reel -->
+  <circle 
+    cx="256" 
+    cy="256" 
+    r="240" 
+    fill="var(--brand-primary-light)"
+    class="icon-base dark:fill-[var(--brand-primary-dark)]"
+  />
+
+  <!-- Inner film reel details -->
+  <g 
+    fill="var(--brand-secondary-light)"
+    class="icon-details dark:fill-[var(--brand-secondary-dark)]"
+  >
+    <!-- Center spindle -->
+    <circle cx="256" cy="256" r="48"/>
+    
+    <!-- Film perforations -->
+    <circle cx="256" cy="96" r="32"/>
+    <circle cx="416" cy="256" r="32"/>
+    <circle cx="256" cy="416" r="32"/>
+    <circle cx="96" cy="256" r="32"/>
+    
+    <!-- Diagonal perforations -->
+    <circle cx="363" cy="363" r="32"/>
+    <circle cx="363" cy="149" r="32"/>
+    <circle cx="149" cy="363" r="32"/>
+    <circle cx="149" cy="149" r="32"/>
+  </g>
+
+  <!-- Dynamic film strip -->
+  <path
+    d="M256 48c-114.88 0-208 93.12-208 208s93.12 208 208 208 208-93.12 208-208S370.88 48 256 48zm0 384c-97.05 0-176-78.95-176-176S158.95 80 256 80s176 78.95 176 176-78.95 176-176 176z"
+    fill="var(--brand-secondary-light)"
+    class="icon-strip dark:fill-[var(--brand-secondary-dark)]"
+    stroke="var(--brand-primary-light)"
+    stroke-width="2"
+    class="icon-strip-stroke dark:stroke-[var(--brand-primary-dark)]"
+  />
+
+  <!-- Decorative film strip segments -->
+  <path
+    d="M256 16v64M496 256h-64M256 496v-64M16 256h64"
+    stroke="var(--brand-secondary-light)"
+    stroke-width="24"
+    stroke-linecap="round"
+    class="icon-segments dark:stroke-[var(--brand-secondary-dark)]"
+  />
+</svg>
