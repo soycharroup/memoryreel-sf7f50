@@ -1,0 +1,66 @@
+{
+  "validation": {
+    "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "invalidPassword": "Das Passwort muss mindestens 8 Zeichen lang sein und Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen enthalten",
+    "invalidMediaType": "Nicht unterstützter Medientyp. Bitte laden Sie nur Bilder oder Videos hoch",
+    "invalidMediaSize": "Dateigröße überschreitet das maximal zulässige Limit",
+    "requiredField": "Dieses Feld ist erforderlich",
+    "invalidInput": "Bitte überprüfen Sie Ihre Eingabe und versuchen Sie es erneut",
+    "invalidFileFormat": "Ungültiges Dateiformat. Unterstützte Formate: JPG, PNG, MP4, MOV",
+    "invalidMetadata": "Ungültige oder fehlende Metadaten in der Mediendatei"
+  },
+  "authentication": {
+    "invalidCredentials": "Ungültige E-Mail oder Passwort",
+    "accountLocked": "Ihr Konto wurde gesperrt. Bitte kontaktieren Sie den Support",
+    "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an",
+    "mfaRequired": "Zwei-Faktor-Authentifizierung erforderlich",
+    "mfaInvalid": "Ungültiger Authentifizierungscode",
+    "tokenExpired": "Authentifizierungstoken ist abgelaufen",
+    "deviceNotRecognized": "Unbekanntes Gerät erkannt. Bitte bestätigen Sie Ihre Identität",
+    "biometricFailed": "Biometrische Authentifizierung fehlgeschlagen"
+  },
+  "authorization": {
+    "insufficientPermissions": "Sie haben keine Berechtigung für diese Aktion",
+    "accountSuspended": "Ihr Konto wurde suspendiert",
+    "libraryAccessDenied": "Sie haben keinen Zugriff auf diese Bibliothek",
+    "contentAccessDenied": "Sie haben keinen Zugriff auf diesen Inhalt",
+    "uploadNotAllowed": "Sie haben keine Berechtigung zum Hochladen von Inhalten",
+    "sharingLimitExceeded": "Freigabelimit für diese Bibliothek erreicht",
+    "familyGroupRequired": "Zugriff nur für Familienmitglieder möglich"
+  },
+  "resource": {
+    "notFound": "Die angeforderte Ressource wurde nicht gefunden",
+    "libraryNotFound": "Bibliothek nicht gefunden",
+    "contentNotFound": "Inhalt nicht gefunden", 
+    "userNotFound": "Benutzer nicht gefunden",
+    "mediaNotFound": "Mediendatei nicht gefunden",
+    "collectionNotFound": "Sammlung nicht gefunden",
+    "versionNotFound": "Angeforderte Version nicht verfügbar"
+  },
+  "rateLimit": {
+    "tooManyRequests": "Zu viele Anfragen. Bitte versuchen Sie es später erneut",
+    "uploadLimit": "Upload-Limit erreicht. Bitte versuchen Sie es später erneut",
+    "searchLimit": "Suchlimit erreicht. Bitte versuchen Sie es später erneut",
+    "apiLimit": "API-Anfragelimit erreicht. Bitte versuchen Sie es später erneut",
+    "deviceLimit": "Maximale Anzahl verbundener Geräte erreicht",
+    "concurrentStreamLimit": "Maximale Anzahl gleichzeitiger Streams erreicht"
+  },
+  "server": {
+    "internalError": "Ein interner Serverfehler ist aufgetreten",
+    "serviceUnavailable": "Service ist vorübergehend nicht verfügbar",
+    "databaseError": "Datenbankoperation fehlgeschlagen",
+    "aiProcessingError": "KI-Verarbeitung fehlgeschlagen",
+    "storageError": "Speicheroperation fehlgeschlagen",
+    "networkError": "Netzwerkfehler aufgetreten",
+    "cdnError": "Fehler beim Laden von Medieninhalten",
+    "backupError": "Backup-Operation fehlgeschlagen"
+  },
+  "ai": {
+    "faceRecognitionFailed": "Gesichtserkennung konnte nicht durchgeführt werden",
+    "contentAnalysisFailed": "Inhaltsanalyse fehlgeschlagen",
+    "categoryAssignmentFailed": "Automatische Kategorisierung fehlgeschlagen",
+    "metadataExtractionFailed": "KI-Metadatenextraktion fehlgeschlagen",
+    "modelNotAvailable": "KI-Modell temporär nicht verfügbar",
+    "lowConfidenceResult": "Unzureichende Erkennungsgenauigkeit"
+  }
+}
