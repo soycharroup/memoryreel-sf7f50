@@ -1,0 +1,35 @@
+# fastlane 2.212.2
+
+# Dynamic platform-specific app identifier resolver
+def for_platform(platform)
+  case platform.to_s.downcase
+  when 'ios'
+    'com.memoryreel.ios'
+  when 'tvos'
+    'com.memoryreel.tv'
+  else
+    raise "Unsupported platform: #{platform}"
+  end
+end
+
+# iOS app configuration
+for_lane :ios do
+  app_identifier('com.memoryreel.ios')
+  apple_id(ENV['APPLE_ID'])
+  team_id(ENV['TEAM_ID'])
+  itc_team_id(ENV['ITC_TEAM_ID'])
+end
+
+# tvOS app configuration
+for_lane :tvos do
+  app_identifier('com.memoryreel.tv')
+  apple_id(ENV['APPLE_ID'])
+  team_id(ENV['TEAM_ID'])
+  itc_team_id(ENV['ITC_TEAM_ID'])
+end
+
+# Default configuration (used when platform is not specified)
+app_identifier(for_platform(lane_context[SharedValues::PLATFORM_NAME] || :ios))
+apple_id(ENV['APPLE_ID'])
+team_id(ENV['TEAM_ID'])
+itc_team_id(ENV['ITC_TEAM_ID'])
