@@ -1,0 +1,132 @@
+{
+  "name": "MemoryReel",
+  "short_name": "MemoryReel",
+  "description": "AI-powered digital memory management platform for families",
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "theme_color": {
+    "light": "#ffffff",
+    "dark": "#1a1a1a",
+    "high_contrast": "#000000"
+  },
+  "background_color": {
+    "light": "#ffffff",
+    "dark": "#1a1a1a",
+    "high_contrast": "#000000"
+  },
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/assets/icons/app-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/app-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/app-icon-1024x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "photo",
+    "video",
+    "family",
+    "entertainment"
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshots/desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "platform": "web",
+      "label": "Desktop Interface"
+    },
+    {
+      "src": "/assets/screenshots/mobile.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "platform": "mobile",
+      "label": "Mobile Interface"
+    },
+    {
+      "src": "/assets/screenshots/tv.png",
+      "sizes": "3840x2160",
+      "type": "image/png",
+      "platform": "tv",
+      "label": "Smart TV Interface"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Upload Media",
+      "short_name": "Upload",
+      "description": "Quick access to media upload",
+      "url": "/upload",
+      "icons": [
+        {
+          "src": "/assets/icons/upload-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Search Memories",
+      "short_name": "Search",
+      "description": "Search through your memories",
+      "url": "/search",
+      "icons": [
+        {
+          "src": "/assets/icons/search-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "TV Mode",
+      "short_name": "TV",
+      "description": "Optimized viewing for Smart TVs",
+      "url": "/tv",
+      "icons": [
+        {
+          "src": "/assets/icons/tv-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "edge_side_panel": {
+    "preferred_width": 480
+  },
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": [
+      "navigate-existing",
+      "auto"
+    ]
+  },
+  "id": "memoryreel-pwa-v1",
+  "protocol_handlers": [
+    {
+      "protocol": "memoryreel",
+      "url": "/handle/%s"
+    }
+  ]
+}
