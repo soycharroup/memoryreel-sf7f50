@@ -1,0 +1,175 @@
+/* ==========================================================================
+   MemoryReel Design System
+   Core CSS variables and design tokens
+   Version: 1.0.0
+   ========================================================================== */
+
+/* Base Theme Configuration
+   ========================================================================== */
+:root {
+  /* Typography
+     ============================== */
+  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-secondary: Georgia, 'Times New Roman', serif;
+
+  /* Font Sizes - Fluid Typography Scale
+     ============================== */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+
+  /* Spacing Scale (8px Grid)
+     ============================== */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+
+  /* Border Radius
+     ============================== */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.375rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-xl: 0.75rem;
+
+  /* Transitions
+     ============================== */
+  --transition-base: 0.2s ease-in-out;
+  --transition-slow: 0.3s ease-in-out;
+
+  /* Shadows
+     ============================== */
+  --shadow-base: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Z-Index Scale
+     ============================== */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal: 1040;
+  --z-index-popover: 1050;
+  --z-index-toast: 1060;
+}
+
+/* Light Theme
+   ========================================================================== */
+:root[data-theme='light'] {
+  --primary-color: #0066cc;
+  --secondary-color: #4a5568;
+  --accent-color: #ed8936;
+  --background-color: #ffffff;
+  --surface-color: #f7fafc;
+  --text-color: #1a202c;
+  --text-color-secondary: #4a5568;
+  --border-color: #e2e8f0;
+  --error-color: #e53e3e;
+  --success-color: #38a169;
+  --warning-color: #ed8936;
+  --info-color: #4299e1;
+}
+
+/* Dark Theme
+   ========================================================================== */
+:root[data-theme='dark'] {
+  --primary-color: #4299e1;
+  --secondary-color: #a0aec0;
+  --accent-color: #ed8936;
+  --background-color: #1a202c;
+  --surface-color: #2d3748;
+  --text-color: #f7fafc;
+  --text-color-secondary: #a0aec0;
+  --border-color: #4a5568;
+  --error-color: #f56565;
+  --success-color: #48bb78;
+  --warning-color: #ed8936;
+  --info-color: #63b3ed;
+}
+
+/* High Contrast Mode (Accessibility)
+   ========================================================================== */
+:root[data-contrast='high'] {
+  --primary-color: #0052cc;
+  --text-color: #000000;
+  --text-color-secondary: #1a202c;
+  --background-color: #ffffff;
+  --border-color: #000000;
+  --focus-ring-color: #0052cc;
+  --focus-ring-width: 3px;
+}
+
+/* TV Interface Optimizations
+   ========================================================================== */
+:root[data-device='tv'] {
+  --font-size-base: 32px;
+  --spacing-base: 2rem;
+  --focus-ring-size: 4px;
+  --card-scale-factor: 1.05;
+  --carousel-gap: 2rem;
+  --navigation-height: 80px;
+}
+
+/* Media Queries for Responsive Design
+   ========================================================================== */
+@media screen and (min-width: 320px) {
+  :root {
+    --font-size-base: 16px;
+    --spacing-base: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --font-size-base: 16px;
+    --spacing-base: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --font-size-base: 16px;
+    --spacing-base: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  :root {
+    --font-size-base: 18px;
+    --spacing-base: 2rem;
+  }
+}
+
+/* Netflix-style Card and Carousel Variables
+   ========================================================================== */
+:root {
+  --card-aspect-ratio: 16 / 9;
+  --card-border-radius: var(--border-radius-md);
+  --card-shadow: var(--shadow-medium);
+  --card-hover-transform: scale(1.05);
+  --card-hover-z-index: 1;
+  
+  --carousel-scroll-padding: var(--spacing-4);
+  --carousel-snap-type: x mandatory;
+  --carousel-snap-align: start;
+  --carousel-scroll-behavior: smooth;
+}
+
+/* Focus Management (Accessibility)
+   ========================================================================== */
+:root {
+  --focus-ring-color: var(--primary-color);
+  --focus-ring-style: solid;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-visible-outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+}
