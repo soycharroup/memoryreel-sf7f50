@@ -1,0 +1,149 @@
+/* ==========================================================================
+   MemoryReel TV Interface Styles
+   Smart TV-specific optimizations and Netflix-style interface
+   Version: 1.0.0
+   ========================================================================== */
+
+@import './variables.css';
+@import './global.css';
+
+/* TV-Specific Root Configuration
+   ========================================================================== */
+:root[data-device='tv'] {
+  --focus-outline-size: 4px;
+  --focus-outline-color: var(--primary-color);
+  --card-scale: 1.05;
+  --carousel-gap: 2rem;
+  --navigation-height: 80px;
+  --tv-overscan-compensation: 5vw;
+  --tv-animation-duration: 300ms;
+  --tv-touch-target-min: 64px;
+  --tv-scroll-snap-strictness: mandatory;
+  --tv-highlight-intensity: 1.2;
+}
+
+/* TV Body Configuration
+   ========================================================================== */
+body[data-device='tv'] {
+  font-size: var(--font-size-base);
+  cursor: none;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+/* Netflix-style Content Carousel
+   ========================================================================== */
+.tv-carousel {
+  display: flex;
+  gap: var(--carousel-gap);
+  padding: calc(var(--spacing-8) + var(--tv-overscan-compensation)) var(--tv-overscan-compensation);
+  overflow-x: scroll;
+  scroll-snap-type: x var(--tv-scroll-snap-strictness);
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  will-change: transform;
+  -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.tv-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Content Card with Focus Management
+   ========================================================================== */
+.tv-card {
+  border-radius: var(--border-radius-lg);
+  min-height: var(--tv-touch-target-min);
+  min-width: var(--tv-touch-target-min);
+  transition: transform var(--tv-animation-duration) cubic-bezier(0.4, 0, 0.2, 1);
+  scroll-snap-align: start;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.tv-card:focus {
+  outline: var(--focus-outline-size) solid var(--focus-outline-color);
+  transform: scale(var(--card-scale));
+  z-index: var(--z-index-focus);
+  filter: brightness(var(--tv-highlight-intensity));
+}
+
+.tv-card:focus-visible {
+  outline-offset: calc(var(--focus-outline-size) * 2);
+}
+
+/* TV Navigation Bar
+   ========================================================================== */
+.tv-navigation {
+  height: var(--navigation-height);
+  padding: var(--spacing-6) calc(var(--spacing-6) + var(--tv-overscan-compensation));
+  background: linear-gradient(to bottom, rgba(var(--background-color-rgb), 0.9), transparent);
+  position: fixed;
+  top: var(--tv-overscan-compensation);
+  left: 0;
+  right: 0;
+  z-index: var(--z-index-navigation);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  will-change: opacity;
+  transition: opacity var(--tv-animation-duration) ease-in-out;
+}
+
+/* Enhanced Focus Indicator
+   ========================================================================== */
+.tv-focus-indicator {
+  position: absolute;
+  inset: calc(var(--focus-outline-size) * -1);
+  border: var(--focus-outline-size) solid var(--focus-outline-color);
+  border-radius: calc(var(--border-radius-lg) + var(--focus-outline-size));
+  opacity: 0;
+  transition: opacity var(--tv-animation-duration) cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  box-shadow: 0 0 20px rgba(var(--primary-color-rgb), 0.5);
+  will-change: opacity, transform;
+}
+
+.tv-focus-indicator.focused {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+/* Performance Optimizations for 4K
+   ========================================================================== */
+@media (min-width: 1440px) {
+  .tv-carousel {
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
+  }
+
+  .tv-card {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+  }
+
+  .tv-navigation {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Reduced Motion Support
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .tv-card,
+  .tv-focus-indicator,
+  .tv-navigation {
+    transition: none;
+  }
+
+  .tv-carousel {
+    scroll-behavior: auto;
+  }
+}
