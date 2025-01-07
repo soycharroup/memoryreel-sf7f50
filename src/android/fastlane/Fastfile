@@ -1,0 +1,247 @@
+# fastlane 2.x
+# Automated deployment configuration for MemoryReel Android and Android TV apps
+
+# Import required fastlane plugins
+fastlane_require 'fastlane-plugin-gradle'
+
+# Default platform configuration
+default_platform(:android)
+
+platform :android do
+  # Setup and validation before any lane execution
+  before_all do |lane, options|
+    # Verify clean git state
+    ensure_git_status_clean
+
+    # Validate build environment
+    gradle(task: "clean")
+    
+    # Setup error tracking
+    ENV["CRASHLYTICS_DEBUG"] = true.to_s
+    
+    # Verify credentials
+    validate_play_store_json_key(
+      json_key: lane_context[SharedValues::GRADLE_PLAY_STORE_JSON_KEY]
+    )
+  end
+
+  # Comprehensive test suite execution
+  lane :test do
+    # Unit tests with coverage
+    gradle(
+      task: "testDebugUnitTest",
+      flags: "--stacktrace",
+      properties: {
+        "testCoverageEnabled" => "true"
+      }
+    )
+
+    # UI tests
+    gradle(
+      task: "connectedDebugAndroidTest",
+      flags: "--stacktrace"
+    )
+
+    # Upload test reports
+    upload_to_testfairy(
+      api_key: ENV["TESTFAIRY_API_KEY"],
+      comment: "Test execution results"
+    )
+  end
+
+  # Build Android mobile app
+  lane :build_mobile do |options|
+    build_type = options[:build_type] || "release"
+    flavor = options[:flavor] || "premium"
+
+    # Clean build directory
+    gradle(task: "clean")
+
+    # Build app
+    gradle(
+      task: "assemble",
+      build_type: build_type,
+      flavor: flavor,
+      properties: {
+        "android.injected.signing.store.file" => ENV["KEYSTORE_PATH"],
+        "android.injected.signing.store.password" => ENV["STORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["KEY_ALIAS"],
+        "android.injected.signing.key.password" => ENV["KEY_PASSWORD"]
+      }
+    )
+  end
+
+  # Build Android TV app
+  lane :build_tv do |options|
+    build_type = options[:build_type] || "release"
+    flavor = options[:flavor] || "premium"
+
+    # Clean build directory
+    gradle(task: "clean")
+
+    # Build TV app
+    gradle(
+      task: "assemble",
+      build_type: build_type,
+      flavor: "#{flavor}Tv",
+      properties: {
+        "android.injected.signing.store.file" => ENV["KEYSTORE_PATH"],
+        "android.injected.signing.store.password" => ENV["STORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["KEY_ALIAS"],
+        "android.injected.signing.key.password" => ENV["KEY_PASSWORD"]
+      }
+    )
+  end
+
+  # Deploy mobile app to beta
+  lane :deploy_mobile_beta do
+    # Build release variant
+    build_mobile(
+      build_type: "release",
+      flavor: "premium"
+    )
+
+    # Upload to Play Store beta
+    upload_to_play_store(
+      track: "beta",
+      rollout: "0.2",
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      aab: lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH]
+    )
+
+    # Notify beta testers
+    slack(
+      message: "New Android mobile beta deployed!",
+      success: true,
+      payload: {
+        "Version" => android_get_version_name,
+        "Build" => android_get_version_code
+      }
+    )
+  end
+
+  # Deploy TV app to beta
+  lane :deploy_tv_beta do
+    # Build TV release variant
+    build_tv(
+      build_type: "release",
+      flavor: "premium"
+    )
+
+    # Upload to Play Store beta
+    upload_to_play_store(
+      track: "beta",
+      rollout: "0.2",
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      aab: lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH]
+    )
+
+    # Notify beta testers
+    slack(
+      message: "New Android TV beta deployed!",
+      success: true,
+      payload: {
+        "Version" => android_get_version_name,
+        "Build" => android_get_version_code
+      }
+    )
+  end
+
+  # Deploy to production
+  lane :deploy_production do |options|
+    platform = options[:platform] || "all"
+
+    # Build and deploy mobile if requested
+    if platform == "mobile" || platform == "all"
+      build_mobile(build_type: "release", flavor: "premium")
+      upload_to_play_store(
+        track: "production",
+        rollout: "0.1",
+        aab: lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH]
+      )
+    end
+
+    # Build and deploy TV if requested
+    if platform == "tv" || platform == "all"
+      build_tv(build_type: "release", flavor: "premium")
+      upload_to_play_store(
+        track: "production",
+        rollout: "0.1",
+        aab: lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH]
+      )
+    end
+
+    # Create git tag
+    add_git_tag(
+      tag: "android-production-#{android_get_version_name}"
+    )
+
+    # Notify stakeholders
+    slack(
+      message: "New Android production release deployed!",
+      success: true,
+      payload: {
+        "Version" => android_get_version_name,
+        "Build" => android_get_version_code,
+        "Platform" => platform
+      }
+    )
+  end
+
+  # Emergency hotfix deployment
+  lane :deploy_hotfix do |options|
+    platform = options[:platform] || "all"
+
+    # Build and deploy mobile hotfix if requested
+    if platform == "mobile" || platform == "all"
+      build_mobile(build_type: "release", flavor: "premium")
+      upload_to_play_store(
+        track: "production",
+        rollout: "0.05",
+        aab: lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH]
+      )
+    end
+
+    # Build and deploy TV hotfix if requested
+    if platform == "tv" || platform == "all"
+      build_tv(build_type: "release", flavor: "premium")
+      upload_to_play_store(
+        track: "production",
+        rollout: "0.05",
+        aab: lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH]
+      )
+    end
+
+    # Create hotfix tag
+    add_git_tag(
+      tag: "android-hotfix-#{android_get_version_name}"
+    )
+
+    # Notify emergency team
+    slack(
+      message: "⚠️ HOTFIX deployed to production!",
+      success: true,
+      channel: "#emergency-releases",
+      payload: {
+        "Version" => android_get_version_name,
+        "Build" => android_get_version_code,
+        "Platform" => platform
+      }
+    )
+  end
+
+  # Error handling for all lanes
+  error do |lane, exception|
+    slack(
+      message: "Lane #{lane} failed with error: #{exception.message}",
+      success: false,
+      payload: {
+        "Stack Trace" => exception.backtrace.join("\n")
+      }
+    )
+  end
+end
