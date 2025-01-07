@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Identity -->
+    <string name="app_name_tv">MemoryReel</string>
+    <string name="app_description_tv">Your family memories, beautifully organized</string>
+
+    <!-- Main Navigation -->
+    <string name="browse_title">Browse Memories</string>
+    <string name="search_title">Search</string>
+    <string name="settings_title">Settings</string>
+    <string name="profile_title">Family Profile</string>
+    <string name="ai_assistant_title">AI Assistant</string>
+
+    <!-- Accessibility Content Descriptions -->
+    <string name="cd_focus_card">Selected memory card. Press center to view details.</string>
+    <string name="cd_carousel_row">Memory collection row. Use left and right to browse.</string>
+    <string name="cd_voice_search">Voice search button. Press to start voice commands.</string>
+    <string name="cd_navigation_hint">Use D-pad to navigate between memories.</string>
+    <string name="cd_ai_features">AI-powered features and suggestions.</string>
+
+    <!-- Media Section Headers -->
+    <string name="recently_added">Recently Added</string>
+    <string name="this_day">This Day in History</string>
+    <string name="favorites">Family Favorites</string>
+    <string name="ai_highlights">AI Highlights</string>
+    <string name="smart_collections">Smart Collections</string>
+    <string name="family_moments">Family Moments</string>
+
+    <!-- Media Controls -->
+    <string name="play_pause">Play/Pause</string>
+    <string name="rewind">Rewind</string>
+    <string name="fast_forward">Fast Forward</string>
+    <string name="next">Next Memory</string>
+    <string name="previous">Previous Memory</string>
+    <string name="slideshow_start">Start Slideshow</string>
+    <string name="slideshow_stop">Stop Slideshow</string>
+
+    <!-- Search Interface -->
+    <string name="voice_search_prompt">Say what you\'d like to find…</string>
+    <string name="voice_command_hint">Try \"Show me beach photos from last summer\"</string>
+    <string name="search_hint">Search your memories…</string>
+    <string name="no_results">No memories found</string>
+    <string name="ai_search_suggestion">Try using more specific details like dates or people</string>
+
+    <!-- Error Messages -->
+    <string name="playback_error">Unable to play this memory right now</string>
+    <string name="network_error">Check your internet connection</string>
+    <string name="generic_error">Something went wrong. Please try again.</string>
+    <string name="ai_processing_error">AI features temporarily unavailable</string>
+
+    <!-- Focus Management -->
+    <string name="focus_lost">Focus lost. Press any direction to continue.</string>
+    <string name="focus_hint">Press OK to select</string>
+    <string name="navigation_tip">Use arrow keys to explore your memories</string>
+    <string name="dpad_hint">Use D-pad for navigation</string>
+
+    <!-- AI Assistant Prompts -->
+    <string name="ai_analyzing">Analyzing your memories…</string>
+    <string name="ai_suggestion">Looking for similar moments?</string>
+    <string name="ai_face_detection">Identifying family members…</string>
+    <string name="ai_scene_recognition">Recognizing locations and events…</string>
+
+    <!-- Accessibility Navigation -->
+    <string name="a11y_row_position">Row %1$d of %2$d</string>
+    <string name="a11y_item_position">Item %1$d of %2$d</string>
+    <string name="a11y_navigation_help">Use left and right to move between items, up and down to change rows</string>
+    <string name="a11y_focused_memory">%1$s, captured on %2$s</string>
+
+    <!-- TV-Specific Instructions -->
+    <string name="tv_remote_guide">Use your TV remote to navigate</string>
+    <string name="tv_voice_guide">Press the microphone button to search</string>
+    <string name="tv_navigation_guide">Press menu for additional options</string>
+    <string name="tv_playback_guide">Press play to start viewing</string>
+
+    <!-- Memory Categories -->
+    <string name="category_photos">Photos</string>
+    <string name="category_videos">Videos</string>
+    <string name="category_albums">Albums</string>
+    <string name="category_shared">Shared with Family</string>
+    <string name="category_favorites">Favorites</string>
+
+    <!-- Contextual Actions -->
+    <string name="action_share">Share Memory</string>
+    <string name="action_favorite">Add to Favorites</string>
+    <string name="action_details">View Details</string>
+    <string name="action_slideshow">Start Slideshow</string>
+    <string name="action_edit">Edit Details</string>
+
+    <!-- Loading States -->
+    <string name="loading_memories">Loading your memories…</string>
+    <string name="loading_suggestions">Finding similar moments…</string>
+    <string name="loading_family">Identifying family members…</string>
+    <string name="loading_processing">Processing your content…</string>
+</resources>
