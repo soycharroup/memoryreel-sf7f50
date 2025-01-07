@@ -1,0 +1,37 @@
+# Last matching pattern takes precedence
+
+# Global ownership - required review from project leads
+*                                               @project-leads
+
+# Backend services and APIs
+src/backend/**                                  @backend-team @security-team
+
+# AI service implementations with enhanced security
+src/backend/src/services/ai/**                  @ai-team @backend-team @security-team
+
+# Backend configuration with security and infrastructure review
+src/backend/src/config/**                       @backend-team @security-team @devops-team
+
+# Web application components and accessibility
+src/web/**                                      @frontend-team @accessibility-team
+
+# iOS/tvOS application components
+src/ios/**                                      @ios-team @mobile-leads
+
+# Android mobile and TV applications
+src/android/**                                  @android-team @mobile-leads
+
+# Infrastructure and cloud configuration
+infrastructure/**                               @devops-team @security-team @cloud-architects
+
+# Test suites and automation
+src/**/tests/**                                 @qa-team @test-automation
+
+# Security-specific files
+**/security.constants.ts                        @security-team @security-leads
+**/auth.*.ts                                    @security-team @backend-team @security-leads
+infrastructure/terraform/modules/security/**     @security-team @devops-team @cloud-security
+
+# Documentation
+**/*.md                                         @docs-team @project-leads @technical-writers
+SECURITY.md                                     @security-team @docs-team @security-leads
