@@ -1,0 +1,121 @@
+{
+  "upload": {
+    "title": "Medien hochladen",
+    "dropzone": "Dateien hier ablegen oder klicken zum Auswählen",
+    "selectSource": "Quelle auswählen",
+    "camera": "Kamera",
+    "gallery": "Galerie",
+    "cloudImport": "Cloud-Import",
+    "processing": "Medien werden verarbeitet",
+    "success": "Upload erfolgreich",
+    "error": "Upload fehlgeschlagen",
+    "maxSize": "Maximale Dateigröße: {{size}}",
+    "supportedFormats": "Unterstützte Formate: {{formats}}"
+  },
+  "player": {
+    "play": "Abspielen",
+    "pause": "Pause",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "fullscreen": "Vollbild",
+    "exitFullscreen": "Vollbild beenden",
+    "quality": "Qualität",
+    "speed": "Wiedergabegeschwindigkeit",
+    "volume": "Lautstärke",
+    "mute": "Stummschalten",
+    "unmute": "Ton einschalten",
+    "loading": "Medien werden geladen"
+  },
+  "library": {
+    "recentlyAdded": "Kürzlich hinzugefügt",
+    "thisDay": "Heute in der Geschichte",
+    "favorites": "Favoriten",
+    "sharedWithMe": "Mit mir geteilt",
+    "albums": "Alben",
+    "createAlbum": "Album erstellen",
+    "editAlbum": "Album bearbeiten",
+    "deleteAlbum": "Album löschen",
+    "noMedia": "Keine Medien in dieser Bibliothek gefunden",
+    "itemCount": "{{count}} Elemente"
+  },
+  "metadata": {
+    "date": "Aufnahmedatum",
+    "location": "Standort",
+    "people": "Personen",
+    "tags": "Tags",
+    "addTag": "Tag hinzufügen",
+    "device": "Gerät",
+    "size": "Größe",
+    "format": "Format",
+    "duration": "Dauer",
+    "resolution": "Auflösung"
+  },
+  "ai": {
+    "analyzing": "Medien werden analysiert",
+    "faceDetection": "Gesichtserkennung läuft",
+    "sceneRecognition": "Szenenerkennung läuft",
+    "suggestedTags": "Vorgeschlagene Tags",
+    "peopleDetected": "Erkannte Personen",
+    "addPerson": "Person hinzufügen",
+    "verifyPerson": "Person verifizieren",
+    "similarContent": "Ähnliche Inhalte",
+    "processingStates": {
+      "queued": "In Warteschlange",
+      "analyzing": "Wird analysiert",
+      "faceDetection": "Gesichtserkennung",
+      "sceneAnalysis": "Szenenanalyse",
+      "metadataExtraction": "Metadatenextraktion",
+      "complete": "Analyse abgeschlossen",
+      "failed": "Analyse fehlgeschlagen"
+    }
+  },
+  "sharing": {
+    "share": "Medien teilen",
+    "shareAlbum": "Album teilen",
+    "private": "Privat",
+    "public": "Öffentlich",
+    "familyOnly": "Nur Familie",
+    "copyLink": "Link kopieren",
+    "shareVia": "Teilen über",
+    "sharedWith": "Geteilt mit",
+    "stopSharing": "Teilen beenden"
+  },
+  "tv": {
+    "welcome": "Willkommen bei MemoryReel",
+    "browsePrompt": "Durchstöbern Sie Ihre Erinnerungen",
+    "useRemote": "Verwenden Sie Ihre Fernbedienung zur Navigation",
+    "pressPlay": "Drücken Sie Play zum Starten",
+    "nowPlaying": "Aktuelle Wiedergabe",
+    "upNext": "Als Nächstes",
+    "slideshow": "Diashow",
+    "startSlideshow": "Diashow starten",
+    "endSlideshow": "Diashow beenden",
+    "navigation": {
+      "up": "Nach oben navigieren",
+      "down": "Nach unten navigieren",
+      "left": "Nach links navigieren",
+      "right": "Nach rechts navigieren",
+      "select": "Auswählen",
+      "back": "Zurück"
+    }
+  },
+  "accessibility": {
+    "mediaPlayer": "Mediaplayer",
+    "playButton": "Wiedergabe-Taste",
+    "pauseButton": "Pause-Taste",
+    "nextButton": "Nächstes Medium-Taste",
+    "previousButton": "Vorheriges Medium-Taste",
+    "volumeSlider": "Lautstärkeregler",
+    "progressBar": "Fortschrittsbalken",
+    "thumbnail": "Mediavorschau",
+    "carousel": "Medienkarussell",
+    "gridView": "Rasteransicht der Medienelemente",
+    "screenReader": {
+      "carouselNavigation": "Verwenden Sie die Pfeiltasten zum Navigieren durch das Karussell",
+      "imageDescription": "Bild von {{description}}",
+      "videoDescription": "Video von {{description}}",
+      "loadingState": "Inhalt wird geladen, bitte warten",
+      "processingState": "Medien werden verarbeitet, {{progress}} Prozent abgeschlossen"
+    }
+  }
+}
