@@ -1,0 +1,52 @@
+# Use Node.js 18 Alpine as base image for lightweight development environment
+FROM node:18-alpine
+
+# Set development environment variables
+ENV NODE_ENV=development \
+    PORT=3000 \
+    DEBUG_PORT=9229 \
+    TS_NODE_PROJECT=tsconfig.json
+
+# Install development dependencies and debugging tools
+RUN apk add --no-cache \
+    wget \
+    curl \
+    git
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Copy package files for dependency installation
+COPY package*.json ./
+
+# Install all dependencies including devDependencies
+RUN npm install
+
+# Copy TypeScript and development configuration files
+COPY tsconfig.json nodemon.json ./
+
+# Copy source code
+COPY src/ ./src/
+
+# Create non-root user for better security
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+RUN chown -R appuser:appgroup /usr/src/app
+USER appuser
+
+# Expose development and debugging ports
+EXPOSE ${PORT} ${DEBUG_PORT}
+
+# Configure development-specific health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:${PORT}/health || exit 1
+
+# Set up nodemon for hot-reloading with TypeScript and debugging support
+CMD ["npm", "run", "dev"]
+
+# Development-specific volume mounts
+VOLUME ["/usr/src/app/node_modules", "/usr/src/app/src", "/usr/src/app/dist"]
+
+# Development-specific labels
+LABEL environment="development" \
+      maintainer="MemoryReel Team" \
+      description="Development environment for MemoryReel backend services"
