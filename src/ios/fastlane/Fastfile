@@ -1,0 +1,242 @@
+# fastlane 2.212.2
+# Enhanced Fastfile for MemoryReel iOS and tvOS app automation
+# with enterprise-grade security, monitoring, and reliability features
+
+# Import dependencies
+fastlane_version REQUIRED_VERSION = "2.212.2"
+default_platform(:ios)
+
+# Import platform-specific configurations
+import("Appfile") # Version: Referenced in file
+import("Matchfile") # Version: Referenced in file
+
+# Global configurations
+XCODEPROJ = "MemoryReel.xcodeproj"
+IOS_SCHEME = "MemoryReel"
+TVOS_SCHEME = "MemoryReelTV"
+MAX_CONCURRENT_TESTS = 3
+BUILD_CACHE_ENABLED = true
+METRICS_ENABLED = true
+
+# Initialize Datadog monitoring
+require 'datadog/ci' # Version: 1.0.0
+
+# Setup platform configurations
+platform :ios do
+  before_all do |lane, options|
+    # Verify environment and dependencies
+    verify_fastlane_version(version: REQUIRED_VERSION)
+    verify_xcode_version
+    
+    # Initialize monitoring
+    Datadog::CI.configure do |c|
+      c.service = 'ios-pipeline'
+      c.env = ENV['ENVIRONMENT']
+    end
+    
+    # Setup code signing
+    setup_ci if ENV['CI']
+    sync_code_signing(
+      type: "appstore",
+      readonly: true,
+      app_identifier: CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+    )
+    
+    # Initialize build cache
+    if BUILD_CACHE_ENABLED
+      setup_build_cache(
+        cache_path: "~/Library/Developer/Xcode/DerivedData",
+        enable_compression: true
+      )
+    end
+  end
+
+  desc "Run iOS tests with enhanced reliability and parallel execution"
+  lane :test_ios do |options|
+    # Configure test environment
+    xcargs = {
+      :COMPILER_INDEX_STORE_ENABLE => "NO",
+      :SWIFT_COMPILATION_MODE => "wholemodule"
+    }
+    
+    # Clean build directory
+    clear_derived_data
+    
+    begin
+      # Run tests in parallel
+      scan(
+        scheme: IOS_SCHEME,
+        device: "iPhone 14 Pro",
+        clean: true,
+        parallel_testing: true,
+        concurrent_workers: MAX_CONCURRENT_TESTS,
+        result_bundle: true,
+        code_coverage: true,
+        xcargs: xcargs,
+        retry_count: options[:retry_count] || 2
+      )
+      
+      # Process and upload test results
+      process_test_results
+      upload_test_coverage
+    rescue => ex
+      handle_test_failure(ex)
+      raise ex
+    end
+  end
+
+  desc "Build iOS app with enhanced caching and validation"
+  lane :build_ios do |options|
+    # Validate build configuration
+    validate_build_config(options)
+    
+    # Update version and build number
+    increment_version_number(
+      version_number: options[:version]
+    )
+    increment_build_number(
+      build_number: options[:build_number]
+    )
+    
+    # Install dependencies
+    cocoapods(
+      clean_install: true,
+      repo_update: true
+    )
+    
+    begin
+      # Build app
+      gym(
+        scheme: IOS_SCHEME,
+        export_method: "app-store",
+        include_bitcode: true,
+        include_symbols: true,
+        export_options: {
+          provisioningProfiles: {
+            CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier) => "match AppStore #{CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)}"
+          }
+        },
+        build_path: "build",
+        output_directory: "build/ios",
+        xcargs: build_xcargs(options)
+      )
+      
+      # Validate build artifacts
+      validate_build_artifacts
+    rescue => ex
+      handle_build_failure(ex)
+      raise ex
+    end
+  end
+
+  desc "Deploy iOS app with phased release and monitoring"
+  lane :deploy_ios do |options|
+    # Validate deployment prerequisites
+    validate_deployment_config(options)
+    
+    begin
+      # Upload to TestFlight
+      pilot(
+        skip_waiting_for_build_processing: true,
+        distribute_external: false,
+        notify_external_testers: false,
+        ipa: "build/ios/MemoryReel.ipa"
+      )
+      
+      # Configure phased release
+      if options[:phase_percentage]
+        configure_phased_release(
+          percentage: options[:phase_percentage],
+          rollback_version: options[:rollback_version]
+        )
+      end
+      
+      # Submit for review
+      submit_for_review(
+        submit_for_review: true,
+        automatic_release: false,
+        force: true
+      )
+      
+      # Monitor deployment
+      monitor_deployment
+    rescue => ex
+      handle_deployment_failure(ex)
+      raise ex
+    end
+  end
+
+  # Helper methods
+  private
+
+  def validate_build_config(options)
+    UI.user_error!("Version number required") unless options[:version]
+    UI.user_error!("Build number required") unless options[:build_number]
+  end
+
+  def build_xcargs(options)
+    xcargs = {
+      :SWIFT_COMPILATION_MODE => "wholemodule",
+      :ONLY_ACTIVE_ARCH => "NO"
+    }
+    xcargs.map { |k,v| "#{k}=#{v}" }.join(' ')
+  end
+
+  def validate_deployment_config(options)
+    UI.user_error!("Version required") unless options[:version]
+    UI.user_error!("Rollback version required") unless options[:rollback_version]
+  end
+
+  def configure_phased_release(options)
+    # Configure phased release settings
+    app_store_connect_api_key(
+      key_id: ENV['ASC_KEY_ID'],
+      issuer_id: ENV['ASC_ISSUER_ID'],
+      key_content: ENV['ASC_KEY_CONTENT']
+    )
+    
+    Spaceship::ConnectAPI::App.find(CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)).builds.first.update(attributes: {
+      phased_release: {
+        current_day_number: 1,
+        total_pause_days: 0,
+        current_day_percentage: options[:percentage]
+      }
+    })
+  end
+
+  def monitor_deployment
+    Datadog::CI.monitor_deployment(
+      service: 'ios-app',
+      env: ENV['ENVIRONMENT'],
+      version: lane_context[SharedValues::VERSION_NUMBER]
+    )
+  end
+
+  def handle_test_failure(exception)
+    Datadog::CI.record_test_failure(
+      suite: 'ios-tests',
+      name: exception.message
+    )
+  end
+
+  def handle_build_failure(exception)
+    Datadog::CI.record_build_failure(
+      job: 'ios-build',
+      error: exception.message
+    )
+  end
+
+  def handle_deployment_failure(exception)
+    Datadog::CI.record_deployment_failure(
+      service: 'ios-app',
+      error: exception.message
+    )
+  end
+end
+
+# tvOS platform configuration
+platform :tvos do
+  # Similar structure as iOS platform with tvOS-specific configurations
+  # Implement tvOS-specific lanes following the same pattern
+  # but with TVOS_SCHEME and appropriate device configurations
+end
