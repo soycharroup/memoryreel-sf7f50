@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base application theme extending Material3 with dynamic color support -->
+    <style name="Theme.MemoryReel" parent="Theme.Material3.DayNight">
+        <!-- Material3 color attributes -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorBackgroundLight</item>
+        <item name="colorSurface">@color/colorSurfaceLight</item>
+        <item name="android:textColorPrimary">@color/textColorPrimaryLight</item>
+        <item name="android:textColorSecondary">@color/textColorSecondaryLight</item>
+
+        <!-- Material3 theme overlays -->
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.DynamicColors.Light</item>
+        <item name="elevationOverlayEnabled">true</item>
+
+        <!-- Custom component styles -->
+        <item name="carouselStyle">@style/Widget.MemoryReel.Carousel</item>
+        <item name="mediaCardStyle">@style/Widget.MemoryReel.MediaCard</item>
+
+        <!-- Window configurations -->
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <!-- Dark theme variant with enhanced contrast -->
+    <style name="Theme.MemoryReel.Dark" parent="Theme.Material3.Dark">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.DynamicColors.Dark</item>
+        <item name="elevationOverlayEnabled">true</item>
+
+        <item name="carouselStyle">@style/Widget.MemoryReel.Carousel.Dark</item>
+        <item name="mediaCardStyle">@style/Widget.MemoryReel.MediaCard.Dark</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <!-- TV-optimized theme extending Leanback -->
+    <style name="Theme.MemoryReel.TV" parent="Theme.Leanback">
+        <!-- TV-specific colors -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/colorBackgroundLight</item>
+        <item name="android:textColorPrimary">@color/textColorPrimaryLight</item>
+        <item name="tvFocusHighlight">@color/tvFocusHighlightLight</item>
+
+        <!-- TV-optimized typography -->
+        <item name="android:textAppearance">@style/TextAppearance.MemoryReel.TV.Body</item>
+        <item name="browseTitleTextStyle">@style/TextAppearance.MemoryReel.TV.Title</item>
+
+        <!-- TV-specific components -->
+        <item name="browsePaddingStart">48dp</item>
+        <item name="browsePaddingEnd">48dp</item>
+        <item name="browsePaddingTop">27dp</item>
+        <item name="browsePaddingBottom">27dp</item>
+
+        <!-- TV focus handling -->
+        <item name="focusOutlineWidth">2dp</item>
+        <item name="focusOutline">@style/Widget.MemoryReel.TV.FocusHighlight</item>
+
+        <!-- TV window configuration -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <!-- Dark TV theme variant -->
+    <style name="Theme.MemoryReel.TV.Dark" parent="Theme.Leanback">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="tvFocusHighlight">@color/tvFocusHighlight</item>
+
+        <item name="android:textAppearance">@style/TextAppearance.MemoryReel.TV.Body.Dark</item>
+        <item name="browseTitleTextStyle">@style/TextAppearance.MemoryReel.TV.Title.Dark</item>
+
+        <item name="browsePaddingStart">48dp</item>
+        <item name="browsePaddingEnd">48dp</item>
+        <item name="browsePaddingTop">27dp</item>
+        <item name="browsePaddingBottom">27dp</item>
+
+        <item name="focusOutlineWidth">2dp</item>
+        <item name="focusOutline">@style/Widget.MemoryReel.TV.FocusHighlight.Dark</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <!-- Typography styles for TV interface -->
+    <style name="TextAppearance.MemoryReel.TV.Body" parent="TextAppearance.Leanback">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textColorPrimaryLight</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="TextAppearance.MemoryReel.TV.Body.Dark">
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.MemoryReel.TV.Title" parent="TextAppearance.Leanback.Title">
+        <item name="android:textSize">34sp</item>
+        <item name="android:textColor">@color/textColorPrimaryLight</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="TextAppearance.MemoryReel.TV.Title.Dark">
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+</resources>
