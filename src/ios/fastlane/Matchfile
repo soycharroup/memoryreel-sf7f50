@@ -1,0 +1,91 @@
+# fastlane match 2.212.2
+# Configuration for managing iOS and tvOS code signing certificates and provisioning profiles
+# using an encrypted git repository for secure team synchronization
+
+# Git repository URL for storing encrypted certificates and profiles
+git_url(ENV['MATCH_GIT_URL'])
+
+# Storage mode configuration - using git for team synchronization
+storage_mode("git")
+
+# Git branch containing the certificates
+git_branch("main")
+
+# Type of certificates to sync (appstore for production distribution)
+type("appstore")
+
+# App identifiers for both iOS and tvOS apps
+app_identifier([
+  "com.memoryreel.ios",   # iOS app bundle identifier
+  "com.memoryreel.tv"     # tvOS app bundle identifier
+])
+
+# Apple Developer Team ID
+team_id(ENV['TEAM_ID'])
+
+# Apple ID for authentication
+username(ENV['APPLE_ID'])
+
+# Git basic authorization for repository access
+git_basic_authorization(ENV['MATCH_GIT_BASIC_AUTH'])
+
+# Set readonly mode when running in CI environment
+readonly(ENV['CI'])
+
+# Platform-specific configurations
+platform :ios do
+  app_identifier("com.memoryreel.ios")
+  
+  # Certificate types to sync for iOS
+  certificates([
+    "development",
+    "distribution"
+  ])
+  
+  # Profile types to sync for iOS
+  profiles([
+    "development",
+    "appstore"
+  ])
+  
+  # Force refresh for new devices
+  force_for_new_devices(true)
+end
+
+platform :tvos do
+  app_identifier("com.memoryreel.tv")
+  
+  # Certificate types to sync for tvOS
+  certificates([
+    "development",
+    "distribution"
+  ])
+  
+  # Profile types to sync for tvOS
+  profiles([
+    "development",
+    "appstore"
+  ])
+  
+  # Force refresh for new devices
+  force_for_new_devices(true)
+end
+
+# Advanced git repository decryption configuration
+def decrypt_git_repository
+  ensure_git_access
+  validate_environment
+  
+  # Password for decrypting the git repository
+  git_password = ENV['MATCH_PASSWORD']
+  
+  # Additional security measures
+  keychain_password = ENV['MATCH_KEYCHAIN_PASSWORD']
+  
+  # Set up local keychain access
+  setup_keychain(
+    password: keychain_password,
+    timeout: 3600,
+    lock_when_sleeps: true
+  )
+end
