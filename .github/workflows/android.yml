@@ -1,0 +1,203 @@
+name: Android CI/CD
+
+on:
+  push:
+    branches: [ main, develop, 'hotfix/*' ]
+    paths:
+      - 'src/android/**'
+      - '.github/workflows/android.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'src/android/**'
+
+env:
+  JAVA_VERSION: '17'
+  NODE_VERSION: '18'
+  RUBY_VERSION: '3.0'
+  GRADLE_OPTS: '-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2'
+  ANDROID_SDK_TOOLS: '8092744'
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: 'gradle'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Cache Android SDK
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.android/sdk
+            ~/.android/avd
+          key: android-sdk-${{ env.ANDROID_SDK_TOOLS }}
+
+  test:
+    name: Test
+    needs: validate
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [mobile, tv]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: 'gradle'
+
+      - name: Run static analysis
+        run: |
+          cd src/android
+          ./gradlew lint${matrix.platform^}Debug
+
+      - name: Run unit tests
+        run: |
+          cd src/android
+          ./gradlew test${matrix.platform^}DebugUnitTest
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results-${{ matrix.platform }}
+          path: |
+            src/android/app/build/reports/tests/
+            src/android/app/build/reports/lint-results.xml
+
+      - name: Report test status
+        if: always()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  build:
+    name: Build
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [mobile, tv]
+        build_type: [debug, release]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: 'gradle'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd src/android
+          npm install
+
+      - name: Decode keystore
+        if: matrix.build_type == 'release'
+        run: |
+          echo "${{ secrets.RELEASE_KEYSTORE }}" > src/android/app/release.keystore.asc
+          gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch src/android/app/release.keystore.asc > src/android/app/release.keystore
+
+      - name: Build application
+        run: |
+          cd src/android
+          ./gradlew assemble${{ matrix.platform }}${{ matrix.build_type }}
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.platform }}-${{ matrix.build_type }}
+          path: |
+            src/android/app/build/outputs/apk/${{ matrix.platform }}/${{ matrix.build_type }}
+            src/android/app/build/outputs/bundle/${{ matrix.platform }}/${{ matrix.build_type }}
+
+  deploy:
+    name: Deploy
+    needs: build
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/hotfix/'))
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [mobile, tv]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ matrix.platform }}-release
+
+      - name: Setup Fastlane
+        run: |
+          cd src/android
+          bundle install
+
+      - name: Deploy to Play Store
+        run: |
+          cd src/android
+          bundle exec fastlane android deploy_${{ matrix.platform }}_beta
+        env:
+          PLAY_STORE_CONFIG_JSON: ${{ secrets.PLAY_STORE_CONFIG_JSON }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify deployment status
+        if: always()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
