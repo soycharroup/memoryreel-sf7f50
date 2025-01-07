@@ -1,0 +1,38 @@
+Format: PNG
+Dimensions: 450x300px (Base), 900x600px (2x)
+Color Mode: RGBA
+Background: Gradient from #1a1a1a to #2d2d2d at 135 degrees with 95% opacity
+File Size: < 50KB
+Features:
+- Transparent background support
+- High DPI / Retina ready (2x scale)
+- TV-safe colors
+- Alpha channel support
+- Optimized color palette
+
+The image should be created using a professional image editing tool with the following steps:
+
+1. Create canvas at 900x600px (2x size)
+2. Set background gradient:
+   - Start: #1a1a1a
+   - End: #2d2d2d
+   - Angle: 135 degrees
+   - Opacity: 95%
+
+3. Export with following settings:
+   - Format: PNG-24 with alpha channel
+   - Optimization: pngquant for compression
+   - Color palette: Optimized for TV display
+   - File size target: < 50KB
+
+4. Include metadata:
+   - Cache-Control: public, max-age=31536000, immutable
+   - Proper color profile for TV displays
+   - Accessibility metadata
+
+5. Verify:
+   - Aspect ratio is exactly 3:2
+   - Gradient renders smoothly
+   - No banding artifacts
+   - Proper alpha channel support
+   - TV-safe color compliance
