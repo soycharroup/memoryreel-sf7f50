@@ -1,0 +1,120 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+metadata:
+  name: memoryreel-dev
+
+# Base resources to be customized
+resources:
+- ../../base/namespace.yaml
+- ../../base/backend-deployment.yaml
+- ../../base/backend-service.yaml
+- ../../base/web-deployment.yaml
+- ../../base/web-service.yaml
+- ../../base/ingress.yaml
+
+# Development environment namespace
+namespace: memoryreel-dev
+
+# Common labels for all resources
+commonLabels:
+  environment: development
+  managed-by: kustomize
+
+# Common annotations for all resources
+commonAnnotations:
+  environment.memoryreel.com/name: development
+  environment.memoryreel.com/type: non-production
+  environment.memoryreel.com/debug: enabled
+  monitoring.memoryreel.com/enhanced-logging: enabled
+
+# Patches for development-specific configurations
+patches:
+- target:
+    kind: Deployment
+    name: memoryreel-backend
+  patch:
+    spec:
+      replicas: 1
+      template:
+        spec:
+          containers:
+          - name: backend
+            resources:
+              requests:
+                cpu: "500m"
+                memory: "1Gi"
+              limits:
+                cpu: "1"
+                memory: "2Gi"
+            env:
+            - name: NODE_ENV
+              value: development
+            - name: LOG_LEVEL
+              value: debug
+            - name: ENABLE_DEBUG_ENDPOINTS
+              value: "true"
+            - name: CORS_ORIGIN
+              value: "*"
+
+- target:
+    kind: Deployment
+    name: memoryreel-web
+  patch:
+    spec:
+      replicas: 1
+      template:
+        spec:
+          containers:
+          - name: web
+            resources:
+              requests:
+                cpu: "100m"
+                memory: "256Mi"
+              limits:
+                cpu: "200m"
+                memory: "512Mi"
+            env:
+            - name: REACT_APP_ENV
+              value: development
+            - name: REACT_APP_API_URL
+              value: http://memoryreel-backend-dev
+            - name: REACT_APP_DEBUG
+              value: "true"
+            - name: REACT_APP_ENABLE_DEVTOOLS
+              value: "true"
+
+# Development environment ConfigMaps
+configMapGenerator:
+- name: memoryreel-dev-config
+  literals:
+  - ENVIRONMENT=development
+  - LOG_LEVEL=debug
+  - ENABLE_DEBUGGING=true
+  - API_TIMEOUT=30s
+  - RETRY_ATTEMPTS=3
+  - METRICS_ENABLED=true
+  - TRACING_ENABLED=true
+
+# Development-specific container images
+images:
+- name: memoryreel-backend
+  newName: dev-registry.memoryreel.com/backend
+  newTag: dev-latest
+- name: memoryreel-web
+  newName: dev-registry.memoryreel.com/web
+  newTag: dev-latest
+
+# Development-specific resource quotas
+patches:
+- target:
+    kind: ResourceQuota
+    name: memoryreel-quota
+  patch:
+    spec:
+      hard:
+        requests.cpu: "4"
+        requests.memory: "8Gi"
+        limits.cpu: "8"
+        limits.memory: "16Gi"
+        requests.storage: "100Gi"
+        persistentvolumeclaims: "10"
