@@ -1,0 +1,10 @@
+# Fastlane 2.x configuration for MemoryReel Android app deployment
+# Defines app-specific metadata and credentials for Google Play Store deployment
+
+# Android application package name/identifier
+# Referenced from build.gradle applicationId
+package_name("com.memoryreel")
+
+# Path to Play Store service account credentials JSON file
+# Used for authenticated Play Store deployments
+json_key_file("../fastlane/playstore-credentials.json")
