@@ -1,0 +1,118 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+Pods/
+.gradle/
+
+# Build outputs
+build/
+dist/
+coverage/
+
+# IDE and Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcworkspace/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.moved-aside
+DerivedData/
+*.hmap
+*.ipa
+*.xcuserstate
+
+# Android
+*.keystore
+*.jks
+local.properties
+google-services.json
+
+# iOS
+*.mobileprovision
+GoogleService-Info.plist
+
+# Certificates and Keys
+*.pem
+*.p12
+*.key
+*.crt
+*.cer
+*.der
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.hprof
+
+# Cache
+.eslintcache
+.tsbuildinfo
+.next/
+.nuxt/
+.cache/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+.history/
+
+# Platform-specific
+## macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+## Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+## Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# Media and binary files
+*.mp4
+*.mov
+*.avi
+*.wmv
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.ico
+*.pdf
+*.zip
+*.tar.gz
+*.rar
+
+# Project-specific build artifacts
+src/web/dist/
+src/backend/build/
+src/mobile/android/app/build/
+src/mobile/ios/build/
+src/tv/build/
