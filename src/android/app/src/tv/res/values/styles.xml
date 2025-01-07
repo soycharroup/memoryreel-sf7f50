@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    MemoryReel Android TV Styles
+    Using androidx.leanback:leanback:1.0.0 for TV-optimized components
+-->
+<resources>
+    <!-- Netflix-style Content Carousel -->
+    <style name="Widget.MemoryReel.TV.Carousel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/carousel_padding</item>
+        <item name="android:background">@color/carouselBackground</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:descendantFocusability">afterDescendants</item>
+        <item name="android:nextFocusUp">@id/toolbar</item>
+        <item name="android:nextFocusDown">@id/bottom_navigation</item>
+    </style>
+
+    <!-- Media Content Card -->
+    <style name="Widget.MemoryReel.TV.MediaCard">
+        <item name="android:layout_width">@dimen/media_card_width</item>
+        <item name="android:layout_height">@dimen/media_card_height</item>
+        <item name="android:background">@color/mediaCardBackground</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:elevation">@dimen/card_elevation_resting</item>
+        <item name="android:stateListAnimator">@animator/card_state_list_anim</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:padding">@dimen/card_padding</item>
+        <item name="android:layout_margin">@dimen/card_margin</item>
+    </style>
+
+    <!-- Focus Highlight -->
+    <style name="Widget.MemoryReel.TV.FocusHighlight">
+        <item name="android:background">@color/tvFocusHighlight</item>
+        <item name="android:elevation">@dimen/focus_highlight_elevation</item>
+        <item name="android:stateListAnimator">@animator/focus_highlight_animator</item>
+        <item name="android:focusedByDefault">false</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:duplicateParentState">true</item>
+        <item name="android:importantForAccessibility">yes</item>
+    </style>
+
+    <!-- TV-Optimized Title Text -->
+    <style name="Widget.MemoryReel.TV.Text.Title">
+        <item name="android:textSize">@dimen/tv_title_text_size</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <!-- TV-Optimized Subtitle Text -->
+    <style name="Widget.MemoryReel.TV.Text.Subtitle">
+        <item name="android:textSize">@dimen/tv_subtitle_text_size</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- TV Navigation Bar -->
+    <style name="Widget.MemoryReel.TV.NavigationBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/nav_bar_height</item>
+        <item name="android:background">@color/navigationBarBackground</item>
+        <item name="android:elevation">@dimen/nav_bar_elevation</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:paddingStart">@dimen/nav_bar_padding</item>
+        <item name="android:paddingEnd">@dimen/nav_bar_padding</item>
+    </style>
+
+    <!-- TV Search Bar -->
+    <style name="Widget.MemoryReel.TV.SearchBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/search_bar_height</item>
+        <item name="android:background">@drawable/search_bar_background</item>
+        <item name="android:focusable">true</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:inputType">text</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingStart">@dimen/search_bar_padding</item>
+        <item name="android:paddingEnd">@dimen/search_bar_padding</item>
+        <item name="android:textSize">@dimen/search_text_size</item>
+    </style>
+
+    <!-- TV Progress Bar -->
+    <style name="Widget.MemoryReel.TV.ProgressBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateTint">@color/progressBarTint</item>
+        <item name="android:minWidth">@dimen/progress_bar_size</item>
+        <item name="android:minHeight">@dimen/progress_bar_size</item>
+    </style>
+
+    <!-- TV Dialog -->
+    <style name="Widget.MemoryReel.TV.Dialog">
+        <item name="android:layout_width">@dimen/dialog_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/dialog_background</item>
+        <item name="android:elevation">@dimen/dialog_elevation</item>
+        <item name="android:padding">@dimen/dialog_padding</item>
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+    </style>
+
+    <!-- TV Button -->
+    <style name="Widget.MemoryReel.TV.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textColor">@color/buttonTextColor</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:paddingStart">@dimen/button_padding</item>
+        <item name="android:paddingEnd">@dimen/button_padding</item>
+        <item name="android:stateListAnimator">@animator/button_state_list_anim</item>
+    </style>
+</resources>
